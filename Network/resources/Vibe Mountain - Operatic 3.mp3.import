@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Vibe Mountain - Operatic 3.mp3-066e9ee3aaf57329ed383a8f6d5a9fa6.mp3str"
+
+[deps]
+
+source_file="res://resources/Vibe Mountain - Operatic 3.mp3"
+dest_files=[ "res://.import/Vibe Mountain - Operatic 3.mp3-066e9ee3aaf57329ed383a8f6d5a9fa6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

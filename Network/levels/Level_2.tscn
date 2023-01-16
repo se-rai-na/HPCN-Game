@@ -1,0 +1,498 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://levels/Level_2.gd" type="Script" id=1]
+[ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://images/showerhead.png" type="Texture" id=3]
+[ext_resource path="res://images/watersource.png" type="Texture" id=4]
+[ext_resource path="res://images/pipes/curved_1_cap_2.png" type="Texture" id=5]
+[ext_resource path="res://images/water_animation/cap_1/cap_1.tres" type="Texture" id=6]
+[ext_resource path="res://images/pipes/straight_cap_1.png" type="Texture" id=7]
+[ext_resource path="res://images/pipes/curved_2_cap_2.png" type="Texture" id=8]
+[ext_resource path="res://images/pipes/end_left_cap_1.png" type="Texture" id=9]
+[ext_resource path="res://images/pipes/end_right_cap_1.png" type="Texture" id=10]
+[ext_resource path="res://images/sad_icon.png" type="Texture" id=11]
+[ext_resource path="res://images/arrow.png" type="Texture" id=12]
+[ext_resource path="res://images/pipes/straight_cap_2.png" type="Texture" id=13]
+[ext_resource path="res://images/pipes/end_bottom_cap_2.png" type="Texture" id=14]
+[ext_resource path="res://images/water_animation/cap_2/cap_2.tres" type="Texture" id=15]
+[ext_resource path="res://images/happy_icon.png" type="Texture" id=16]
+[ext_resource path="res://images/water_animation/full_2/full_cap_2.tres" type="Texture" id=17]
+[ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=18]
+[ext_resource path="res://images/water_animation/shower_low/shower_low.tres" type="Texture" id=21]
+[ext_resource path="res://images/water_animation/shower_high/shower_high.tres" type="Texture" id=22]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 23
+font_data = ExtResource( 2 )
+
+[sub_resource type="TileSet" id=6]
+0/name = "full_cap_2.tres 0"
+0/texture = ExtResource( 17 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "cap_2.tres 1"
+1/texture = ExtResource( 15 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=8]
+0/name = "cap_1.tres 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="DynamicFont" id=14]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="TileSet" id=5]
+0/name = "end_bottom_cap_2.png 0"
+0/texture = ExtResource( 14 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+2/name = "curved_1_cap_2.png 2"
+2/texture = ExtResource( 5 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 192, 192 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "straight_cap_2.png 3"
+3/texture = ExtResource( 13 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 192 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "curved_2_cap_2.png 4"
+4/texture = ExtResource( 8 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 192, 192 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "straight_cap_1.png 5"
+5/texture = ExtResource( 7 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 64, 128 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "end_left_cap_1.png 6"
+6/texture = ExtResource( 9 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 64, 128 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "end_right_cap_1.png 7"
+7/texture = ExtResource( 10 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 64, 128 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+
+[sub_resource type="TileSet" id=13]
+0/name = "end_left_cap_1.png 0"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "straight_cap_1.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "end_right_cap_1.png 2"
+2/texture = ExtResource( 10 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 64, 128 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="DynamicFont" id=7]
+size = 15
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 2 )
+
+[node name="Level_2" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 20.0 ]
+}
+
+[node name="Watersource" type="Sprite" parent="."]
+position = Vector2( 216, 680 )
+texture = ExtResource( 4 )
+
+[node name="Message" type="Label" parent="."]
+margin_left = 136.0
+margin_top = 184.0
+margin_right = 1800.0
+margin_bottom = 320.0
+custom_fonts/font = SubResource( 1 )
+text = "Make sure that the destination receives the correct number of units!"
+align = 1
+autowrap = true
+
+[node name="Return" type="Button" parent="."]
+visible = false
+margin_left = 832.0
+margin_top = 880.0
+margin_right = 1088.0
+margin_bottom = 960.0
+custom_fonts/font = SubResource( 9 )
+disabled = true
+text = "RETURN TO HOME"
+
+[node name="Water" type="Node" parent="."]
+
+[node name="1" type="TileMap" parent="Water"]
+tile_set = SubResource( 6 )
+format = 1
+
+[node name="2" type="TileMap" parent="Water"]
+position = Vector2( 0, 68 )
+tile_set = SubResource( 8 )
+format = 1
+
+[node name="Shower" type="Sprite" parent="."]
+position = Vector2( 1672, 632 )
+texture = ExtResource( 3 )
+
+[node name="S_Control" type="Control" parent="Shower"]
+pause_mode = 1
+margin_left = -40.0
+margin_top = -32.0
+margin_right = 76.0
+margin_bottom = 112.0
+
+[node name="High" type="Sprite" parent="Shower"]
+visible = false
+position = Vector2( 24, 72 )
+z_index = 2
+texture = ExtResource( 22 )
+
+[node name="Low" type="Sprite" parent="Shower"]
+position = Vector2( 24, 72 )
+z_index = 2
+texture = ExtResource( 21 )
+
+[node name="Soap" type="Sprite" parent="Shower"]
+position = Vector2( 40, 72 )
+z_index = 1
+texture = ExtResource( 18 )
+
+[node name="Happy" type="Sprite" parent="Shower"]
+visible = false
+position = Vector2( 44, 80 )
+texture = ExtResource( 16 )
+
+[node name="Sad" type="Sprite" parent="Shower"]
+position = Vector2( 44, 80 )
+texture = ExtResource( 11 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 1664.0
+margin_top = 760.0
+margin_right = 1776.0
+margin_bottom = 798.0
+custom_fonts/font = SubResource( 14 )
+align = 1
+
+[node name="Pipes" type="Node" parent="."]
+
+[node name="1" type="TileMap" parent="Pipes"]
+tile_set = SubResource( 5 )
+format = 1
+tile_data = PoolIntArray( 327682, 2, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327689, 3, 0, 327690, 3, 0, 327691, 3, 0, 327692, 3, 0, 327693, 3, 0, 327694, 3, 0, 327695, 3, 0, 327696, 3, 0, 327697, 3, 0, 327698, 3, 0, 327699, 3, 0, 327700, 3, 0, 327701, 3, 0, 327702, 3, 0, 327703, 3, 0, 327704, 3, 0, 327705, 4, 0, 524290, 0, 0, 524313, 0, 0 )
+
+[node name="2" type="TileMap" parent="Pipes"]
+position = Vector2( 0, 48 )
+tile_set = SubResource( 13 )
+format = 1
+tile_data = PoolIntArray( 589829, 0, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 2, 0 )
+
+[node name="P1_Control" type="Control" parent="Pipes"]
+margin_left = 160.0
+margin_top = 360.0
+margin_right = 1760.0
+margin_bottom = 480.0
+
+[node name="P2_Control" type="Control" parent="Pipes"]
+margin_left = 360.0
+margin_top = 576.0
+margin_right = 1560.0
+margin_bottom = 696.0
+
+[node name="Cost" type="Node" parent="."]
+
+[node name="Top_plus" type="Button" parent="Cost"]
+anchor_right = 0.017
+anchor_bottom = 0.022
+margin_left = 1048.0
+margin_top = 488.0
+margin_right = 1047.36
+margin_bottom = 496.24
+custom_fonts/font = SubResource( 7 )
+text = "+"
+
+[node name="Top_minus" type="Button" parent="Cost"]
+anchor_right = 0.017
+anchor_bottom = 0.022
+margin_left = 848.0
+margin_top = 488.0
+margin_right = 847.36
+margin_bottom = 496.24
+custom_fonts/font = SubResource( 7 )
+text = "-"
+
+[node name="Top_cost" type="Label" parent="Cost"]
+margin_left = 848.0
+margin_top = 488.0
+margin_right = 1080.0
+margin_bottom = 544.0
+custom_fonts/font = SubResource( 4 )
+align = 1
+
+[node name="Bottom_plus" type="Button" parent="Cost"]
+anchor_right = 0.017
+anchor_bottom = 0.022
+margin_left = 1048.0
+margin_top = 744.0
+margin_right = 1047.36
+margin_bottom = 752.24
+custom_fonts/font = SubResource( 7 )
+text = "+"
+
+[node name="Bottom_minus" type="Button" parent="Cost"]
+anchor_right = 0.017
+anchor_bottom = 0.022
+margin_left = 848.0
+margin_top = 744.0
+margin_right = 847.36
+margin_bottom = 752.24
+custom_fonts/font = SubResource( 7 )
+text = "-"
+
+[node name="Bottom_cost" type="Label" parent="Cost"]
+margin_left = 848.0
+margin_top = 744.0
+margin_right = 1080.0
+margin_bottom = 800.0
+custom_fonts/font = SubResource( 4 )
+align = 1
+
+[node name="Tooltips" type="CanvasLayer" parent="."]
+
+[node name="S_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 1748.0
+margin_top = 736.0
+margin_right = 1888.0
+margin_bottom = 928.0
+
+[node name="Label" type="Label" parent="Tooltips/S_Panel"]
+margin_left = 12.0
+margin_top = 16.0
+margin_right = 124.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 11 )
+autowrap = true
+
+[node name="P1_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 1088.0
+margin_top = 512.0
+margin_right = 1272.0
+margin_bottom = 648.0
+
+[node name="Label" type="Label" parent="Tooltips/P1_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 12 )
+autowrap = true
+
+[node name="P2_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 1088.0
+margin_top = 736.0
+margin_right = 1272.0
+margin_bottom = 872.0
+
+[node name="Label" type="Label" parent="Tooltips/P2_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 12 )
+autowrap = true
+
+[node name="H_Control" type="Control" parent="."]
+margin_left = -88.0
+margin_top = 40.0
+margin_right = -48.0
+margin_bottom = 80.0
+
+[node name="Hint" type="Label" parent="H_Control"]
+margin_left = 248.0
+margin_top = 824.0
+margin_right = 680.0
+margin_bottom = 960.0
+custom_fonts/font = SubResource( 1 )
+text = "Notice the size difference in pipes!"
+align = 1
+autowrap = true
+
+[node name="Arrow" type="Sprite" parent="H_Control"]
+position = Vector2( 640, 760 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 12 )
+
+[node name="Button_Hint" type="Button" parent="H_Control"]
+margin_left = 680.0
+margin_top = 792.0
+margin_right = 712.0
+margin_bottom = 824.0
+custom_fonts/font = SubResource( 10 )
+text = "X"
+
+[connection signal="pressed" from="Return" to="." method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="Shower/S_Control" to="." method="_on_S_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Shower/S_Control" to="." method="_on_S_Control_mouse_exited"]
+[connection signal="mouse_entered" from="Pipes/P1_Control" to="." method="_on_P1_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Pipes/P1_Control" to="." method="_on_P1_Control_mouse_exited"]
+[connection signal="mouse_entered" from="Pipes/P2_Control" to="." method="_on_P2_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Pipes/P2_Control" to="." method="_on_P2_Control_mouse_exited"]
+[connection signal="pressed" from="Cost/Top_plus" to="." method="_on_Top_plus_pressed"]
+[connection signal="pressed" from="Cost/Top_minus" to="." method="_on_Top_minus_pressed"]
+[connection signal="pressed" from="Cost/Bottom_plus" to="." method="_on_Bottom_plus_pressed"]
+[connection signal="pressed" from="Cost/Bottom_minus" to="." method="_on_Bottom_minus_pressed"]
+[connection signal="pressed" from="H_Control/Button_Hint" to="." method="_on_Button_Hint_pressed"]

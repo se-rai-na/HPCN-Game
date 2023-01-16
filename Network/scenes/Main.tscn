@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/StartScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/LevelManager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://images/background.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Main.gd" type="Script" id=5]
+[ext_resource path="res://scenes/PauseScreen.tscn" type="PackedScene" id=6]
+
+[node name="Main" type="Node"]
+script = ExtResource( 5 )
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 4 )
+
+[node name="StartScreen" parent="." instance=ExtResource( 1 )]
+
+[node name="LevelSelectionScreen" parent="." instance=ExtResource( 3 )]
+
+[node name="PauseScreen" parent="." instance=ExtResource( 6 )]
+
+[connection signal="level" from="." to="LevelSelectionScreen" method="display"]
+[connection signal="play_pressed" from="StartScreen" to="LevelSelectionScreen" method="display"]
+[connection signal="back_pressed" from="LevelSelectionScreen" to="StartScreen" method="_ready"]
+[connection signal="eight_pressed" from="LevelSelectionScreen" to="." method="level_8"]
+[connection signal="five_pressed" from="LevelSelectionScreen" to="." method="level_5"]
+[connection signal="four_pressed" from="LevelSelectionScreen" to="." method="level_4"]
+[connection signal="nine_pressed" from="LevelSelectionScreen" to="." method="level_9"]
+[connection signal="one_pressed" from="LevelSelectionScreen" to="." method="level_1"]
+[connection signal="seven_pressed" from="LevelSelectionScreen" to="." method="level_7"]
+[connection signal="six_pressed" from="LevelSelectionScreen" to="." method="level_6"]
+[connection signal="ten_pressed" from="LevelSelectionScreen" to="." method="level_10"]
+[connection signal="three_pressed" from="LevelSelectionScreen" to="." method="level_3"]
+[connection signal="two_pressed" from="LevelSelectionScreen" to="." method="level_2"]
+[connection signal="exit_pause" from="PauseScreen" to="." method="_on_PauseScreen_exit_pause"]
