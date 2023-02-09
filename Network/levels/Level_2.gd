@@ -29,6 +29,10 @@ var change_2 = false
 var units_sent = 0
 var units_required = 2
 
+#to calculate the score
+var clicks = 0
+var score = 0
+
 #scene management
 var main_scene
 signal comp_2
@@ -60,10 +64,22 @@ func _process(delta):
 	#processes level completion
 	if units_sent == units_required:
 		disable_buttons()
+		calculateScore()
 		$Return.disabled = false
 		$Return.show()
 		$Message.text = "Level complete!"
-
+		$Score2.show()
+		$levelScore.text = str(score)
+		$levelScore.show()
+#calculates the score for a level
+#best case: only needed 2 clicks = 5 points
+#each additional pair of clicks leads to 1 point subtracted
+func calculateScore():
+	if clicks == 2:
+		score = 5
+	else:
+		score = 5 - ((clicks - 2) / 2)
+		
 func control_top():
 	#starts water animation on top route
 	if bottom_cost > top_cost and !sent_bottom and !sent_top:
@@ -146,18 +162,22 @@ func enable_buttons():
 func _on_Top_plus_pressed():
 	if top_cost < 10:
 		top_cost = top_cost + 1
+		clicks = clicks + 1
 
 func _on_Top_minus_pressed():
 	if top_cost != 1:
 		top_cost = top_cost - 1
+		clicks = clicks + 1
 
 func _on_Bottom_plus_pressed():
 	if bottom_cost < 10:
 		bottom_cost = bottom_cost + 1
+		clicks = clicks + 1
 
 func _on_Bottom_minus_pressed():
 	if bottom_cost != 1:
 		bottom_cost = bottom_cost - 1
+		clicks = clicks + 1
 
 #tooltip controls
 #hint

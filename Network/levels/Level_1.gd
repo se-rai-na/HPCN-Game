@@ -16,6 +16,9 @@ var units_required = 2
 #cost of pipe
 var cost = 1
 
+#to calculate score
+var clicks = 0
+
 #scene management
 var main_scene
 signal comp_1
@@ -40,10 +43,13 @@ func _process(delta):
 	$Tooltips/W_Panel.rect_global_position = get_viewport().get_mouse_position()
 	$Tooltips/S_Panel.rect_global_position = get_viewport().get_mouse_position()
 	$Tooltips/P_Panel.rect_global_position = get_viewport().get_mouse_position()
-	
+	var number = 10
 	#evaluates win condition
 	if units_sent == units_required:
 		$Return.disabled = false
+		$levelScore.text = str(number);
+		$levelScore.show()
+		$Score2.show()
 		$Return.show()
 		$Message_Success.show()
 
@@ -68,10 +74,12 @@ func _on_Button_pressed():
 func _on_plus_pressed():
 	if cost < 10:
 		cost = cost + 1
+		clicks =+ clicks
 
 func _on_minus_pressed():
 	if cost != 1:
 		cost = cost - 1
+		clicks =+ clicks
 		
 func disable_buttons():
 	$Cost/minus.disabled = true
