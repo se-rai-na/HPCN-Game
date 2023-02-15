@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://levels/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
@@ -18,23 +18,12 @@
 [ext_resource path="res://images/happy_icon.png" type="Texture" id=16]
 [ext_resource path="res://images/water_animation/full_2/full_cap_2.tres" type="Texture" id=17]
 [ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=18]
+[ext_resource path="res://resources/score_label.tres" type="StyleBox" id=19]
 [ext_resource path="res://images/water_animation/shower_low/shower_low.tres" type="Texture" id=21]
 [ext_resource path="res://images/water_animation/shower_high/shower_high.tres" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=15]
-size = 80
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=16]
-size = 70
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 23
 font_data = ExtResource( 2 )
 
 [sub_resource type="TileSet" id=6]
@@ -248,6 +237,33 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.913725, 0.878431, 0.878431, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.956863, 0.921569, 0.921569, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color( 0.890196, 0.886275, 0.886275, 0.6 )
+shadow_size = 10
+
+[sub_resource type="DynamicFont" id=15]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 70
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 23
+font_data = ExtResource( 2 )
+
 [node name="Level_2" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -267,41 +283,6 @@ custom_fonts/font = SubResource( 1 )
 text = "Make sure that the destination receives the correct number of units!"
 align = 1
 autowrap = true
-
-[node name="Score2" type="Label" parent="."]
-visible = false
-anchor_right = 0.536
-anchor_bottom = 0.252
-margin_left = 546.0
-margin_top = 199.0
-margin_right = 470.0
-margin_bottom = 147.0
-custom_fonts/font = SubResource( 15 )
-text = "SCORE"
-align = 1
-valign = 1
-
-[node name="levelScore" type="Label" parent="."]
-visible = false
-margin_left = 673.0
-margin_top = 470.0
-margin_right = 1275.0
-margin_bottom = 650.0
-custom_colors/font_color = Color( 0.317647, 0.0352941, 0.0352941, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 16 )
-align = 1
-valign = 1
-
-[node name="Return" type="Button" parent="."]
-visible = false
-margin_left = 832.0
-margin_top = 880.0
-margin_right = 1088.0
-margin_bottom = 960.0
-custom_fonts/font = SubResource( 9 )
-disabled = true
-text = "RETURN TO HOME"
 
 [node name="Water" type="Node" parent="."]
 
@@ -517,7 +498,50 @@ margin_bottom = 824.0
 custom_fonts/font = SubResource( 10 )
 text = "X"
 
-[connection signal="pressed" from="Return" to="." method="_on_Button_pressed"]
+[node name="score_background" type="Label" parent="."]
+visible = false
+margin_left = 358.0
+margin_top = 52.0
+margin_right = 1585.0
+margin_bottom = 1006.0
+custom_styles/normal = SubResource( 17 )
+
+[node name="Score2" type="Label" parent="."]
+visible = false
+anchor_right = 0.536
+anchor_bottom = 0.252
+margin_left = 389.0
+margin_top = 85.0
+margin_right = 530.88
+margin_bottom = 25.84
+custom_fonts/font = SubResource( 15 )
+custom_styles/normal = ExtResource( 19 )
+text = "level complete!"
+align = 1
+valign = 1
+
+[node name="levelScore" type="Label" parent="."]
+visible = false
+margin_left = 673.0
+margin_top = 470.0
+margin_right = 1275.0
+margin_bottom = 650.0
+custom_colors/font_color = Color( 0.317647, 0.0352941, 0.0352941, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 16 )
+align = 1
+valign = 1
+
+[node name="Return" type="Button" parent="."]
+visible = false
+margin_left = 832.0
+margin_top = 880.0
+margin_right = 1088.0
+margin_bottom = 960.0
+custom_fonts/font = SubResource( 9 )
+disabled = true
+text = "RETURN TO HOME"
+
 [connection signal="mouse_entered" from="Shower/S_Control" to="." method="_on_S_Control_mouse_entered"]
 [connection signal="mouse_exited" from="Shower/S_Control" to="." method="_on_S_Control_mouse_exited"]
 [connection signal="mouse_entered" from="Pipes/P1_Control" to="." method="_on_P1_Control_mouse_entered"]
@@ -529,3 +553,4 @@ text = "X"
 [connection signal="pressed" from="Cost/Bottom_plus" to="." method="_on_Bottom_plus_pressed"]
 [connection signal="pressed" from="Cost/Bottom_minus" to="." method="_on_Bottom_minus_pressed"]
 [connection signal="pressed" from="H_Control/Button_Hint" to="." method="_on_Button_Hint_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_Button_pressed"]

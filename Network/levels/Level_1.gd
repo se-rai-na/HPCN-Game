@@ -47,8 +47,9 @@ func _process(delta):
 	#evaluates win condition
 	if units_sent == units_required:
 		$Return.disabled = false
-		$levelScore.text = str(number);
-		$levelScore.show()
+		#$levelScore.text = str(number);
+		#$levelScore.show()
+		$Score.text = str(number)
 		$Score2.show()
 		$Return.show()
 		$Message_Success.show()

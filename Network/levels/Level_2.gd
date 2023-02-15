@@ -67,9 +67,10 @@ func _process(delta):
 		calculateScore()
 		$Return.disabled = false
 		$Return.show()
+		$score_background.show()
 		$Message.text = "Level complete!"
 		$Score2.show()
-		$levelScore.text = str(score)
+		$levelScore.text = "Score: " + str(score)
 		$levelScore.show()
 #calculates the score for a level
 #best case: only needed 2 clicks = 5 points

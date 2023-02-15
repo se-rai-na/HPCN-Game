@@ -4,7 +4,7 @@
 extends Node
 
 #when true, allows playing any level without having to complete the previous one
-var debug = false
+var debug = true
 
 #flags for respective level completion
 #unlocks the next level

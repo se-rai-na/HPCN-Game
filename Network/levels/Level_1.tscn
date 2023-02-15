@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://images/sad_icon.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://images/watersource.png" type="Texture" id=9]
 [ext_resource path="res://levels/Level_1.gd" type="Script" id=10]
 [ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=11]
+[ext_resource path="res://resources/score_label.tres" type="StyleBox" id=12]
 [ext_resource path="res://images/showerhead.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=4]
@@ -25,6 +26,9 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=19]
 size = 70
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.0980392, 0.0862745, 0.0862745, 1 )
 
 [sub_resource type="DynamicFont" id=15]
 size = 40
@@ -137,6 +141,7 @@ margin_right = 96.0
 margin_bottom = 85.0
 
 [node name="Message" type="Label" parent="."]
+visible = false
 margin_left = 192.0
 margin_top = 136.0
 margin_right = 1724.0
@@ -150,26 +155,28 @@ autowrap = true
 
 [node name="Score2" type="Label" parent="."]
 visible = false
-anchor_right = 0.536
+anchor_right = 0.56
 anchor_bottom = 0.252
-margin_left = 546.0
-margin_top = 199.0
-margin_right = 470.88
-margin_bottom = 147.84
+margin_left = 568.0
+margin_top = 86.0
+margin_right = 295.88
+margin_bottom = 765.84
 custom_fonts/font = SubResource( 18 )
+custom_styles/normal = ExtResource( 12 )
 text = "SCORE"
 align = 1
 valign = 1
 
 [node name="levelScore" type="Label" parent="."]
 visible = false
-margin_left = 679.0
-margin_top = 390.0
-margin_right = 1275.0
-margin_bottom = 604.0
+margin_left = 1257.0
+margin_top = 806.0
+margin_right = 1853.0
+margin_bottom = 1020.0
 custom_colors/font_color = Color( 0.333333, 0.0431373, 0.0431373, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
 align = 1
 valign = 1
 
@@ -183,7 +190,6 @@ custom_fonts/font = SubResource( 15 )
 text = "Level complete!"
 
 [node name="Return" type="Button" parent="."]
-visible = false
 margin_left = 832.0
 margin_top = 792.0
 margin_right = 1088.0
