@@ -8,6 +8,9 @@ extends Node
 #timer controls the speed that water tiles populate
 var _timer = null
 
+#timer is used to update the timer display on screen
+var timer = 0
+
 #initializes cost of each pipe
 var top_cost = 2
 var bottom_cost = 1
@@ -56,6 +59,11 @@ func _process(delta):
 	$Cost/Top_cost.text = "Cost: " + str(top_cost)
 	$Cost/Bottom_cost.text = "Cost: " + str(bottom_cost)
 	
+	#updates the timer
+	
+	timer = timer + delta
+	$timer_display.text = "Time: " + str(round(timer)) + "s."
+	
 	#tooltps follow mouse
 	$Tooltips/P1_Panel.rect_global_position = get_viewport().get_mouse_position()
 	$Tooltips/P2_Panel.rect_global_position = get_viewport().get_mouse_position()
@@ -63,23 +71,36 @@ func _process(delta):
 	
 	#processes level completion
 	if units_sent == units_required:
-		disable_buttons()
-		calculateScore()
-		$Return.disabled = false
-		$Return.show()
-		$score_background.show()
-		$Message.text = "Level complete!"
-		$Score2.show()
-		$levelScore.text = "Score: " + str(score)
-		$levelScore.show()
+		#call function to display score
+		showResults()
+		#remove process function from scene tree
+		set_process(false)
+
 #calculates the score for a level
 #best case: only needed 2 clicks = 5 points
 #each additional pair of clicks leads to 1 point subtracted
-func calculateScore():
-	if clicks == 2:
-		score = 5
+func calculateScore(var time):
+	#highest score if level completed in 10sec or less
+	if time <= 10:
+		score = 40
+	#1 point reduction for each additional second
+	#players get 5 points for just completing the level
 	else:
-		score = 5 - ((clicks - 2) / 2)
+		score = 40 - (time - 10)
+		if score < 5:
+			score = 5
+	
+func showResults():
+	var timeResult = round(timer)
+	disable_buttons()
+	calculateScore(timeResult)
+	$Return.disabled = false
+	$Return.show()
+	$score_background.show()
+	$Message.text = "Level complete!"
+	$Score2.show()
+	$levelScore.text = "Score: " + str(score)
+	$levelScore.show()
 		
 func control_top():
 	#starts water animation on top route

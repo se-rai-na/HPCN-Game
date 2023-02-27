@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://levels/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
@@ -264,6 +264,9 @@ font_data = ExtResource( 2 )
 size = 23
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 2 )
+
 [node name="Level_2" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -307,7 +310,6 @@ margin_right = 76.0
 margin_bottom = 112.0
 
 [node name="High" type="Sprite" parent="Shower"]
-visible = false
 position = Vector2( 24, 72 )
 z_index = 2
 texture = ExtResource( 22 )
@@ -323,7 +325,6 @@ z_index = 1
 texture = ExtResource( 18 )
 
 [node name="Happy" type="Sprite" parent="Shower"]
-visible = false
 position = Vector2( 44, 80 )
 texture = ExtResource( 16 )
 
@@ -510,10 +511,10 @@ custom_styles/normal = SubResource( 17 )
 visible = false
 anchor_right = 0.536
 anchor_bottom = 0.252
-margin_left = 389.0
-margin_top = 85.0
-margin_right = 530.88
-margin_bottom = 25.84
+margin_left = 504.0
+margin_top = 92.0
+margin_right = 421.88
+margin_bottom = 19.84
 custom_fonts/font = SubResource( 15 )
 custom_styles/normal = ExtResource( 19 )
 text = "level complete!"
@@ -533,7 +534,6 @@ align = 1
 valign = 1
 
 [node name="Return" type="Button" parent="."]
-visible = false
 margin_left = 832.0
 margin_top = 880.0
 margin_right = 1088.0
@@ -541,6 +541,15 @@ margin_bottom = 960.0
 custom_fonts/font = SubResource( 9 )
 disabled = true
 text = "RETURN TO HOME"
+
+[node name="timer_display" type="Label" parent="."]
+anchor_right = 0.021
+anchor_bottom = 0.013
+margin_left = 1595.0
+margin_top = 45.0
+margin_right = 1840.68
+margin_bottom = 135.96
+custom_fonts/font = SubResource( 18 )
 
 [connection signal="mouse_entered" from="Shower/S_Control" to="." method="_on_S_Control_mouse_entered"]
 [connection signal="mouse_exited" from="Shower/S_Control" to="." method="_on_S_Control_mouse_exited"]
