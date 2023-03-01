@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/score_label.tres" type="StyleBox" id=1]
+[ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+#onready var PlayerNode = get_node('level')
+var timer = 0
+var score 
+#onready var level = get_node('Node')
+# Called when the node enters the scene tree for the first time.
+#func _ready():
+
+	#PlayerNode.connect(\"\", self, \"_process(delta)\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	timer = timer + delta
+	$Display/time.text = \"Time: \" + str(round(timer)) + \"s.\"
+#	level.connect(\"_complete\", self, \"scoreDisplay\")
+
+func scoreDisplay(var maxScore, var minSecs):
+	#get time at completion of game
+	var timeResult = round(timer)
+	#stop the timer
+	set_process(false)
+	#calculate score based on the time it took
+	var score = calculateScore(maxScore, minSecs, timeResult)
+	#$score.text = \"works\"
+	$Display/score.show()
+	
+func calculateScore(var maxScore, var minSecs, var timeResult):
+	var score
+	#e.g. up to 10 sec. still give you the highest points for a level(maxScore)
+	#10 sec would be minSecs 
+	if timeResult <= minSecs:
+		score = maxScore
+	#if timeResult is higher than the threshold to get high score, 
+	#one point for each second is subtracted
+	#you get at least 5 points for completing the game though
+	else:
+		score = maxScore - (timeResult - minSecs)
+		if score < 5:
+			score = 5
+	return score
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+
+[node name="Display" type="CanvasLayer" parent="."]
+
+[node name="time" type="Label" parent="Display"]
+margin_left = 1545.0
+margin_top = 43.0
+margin_right = 1846.0
+margin_bottom = 164.0
+custom_fonts/font = SubResource( 2 )
+
+[node name="score" type="Label" parent="Display"]
+visible = false
+margin_left = 716.0
+margin_top = 457.0
+margin_right = 1238.0
+margin_bottom = 612.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = ExtResource( 1 )
+text = "Hello it works"

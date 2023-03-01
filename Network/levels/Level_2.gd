@@ -5,6 +5,8 @@
 
 extends Node
 
+signal level_success
+
 #timer controls the speed that water tiles populate
 var _timer = null
 
@@ -96,7 +98,6 @@ func showResults():
 	calculateScore(timeResult)
 	$Return.disabled = false
 	$Return.show()
-	$score_background.show()
 	$Message.text = "Level complete!"
 	$Score2.show()
 	$levelScore.text = "Score: " + str(score)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://levels/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
@@ -237,21 +237,6 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.913725, 0.878431, 0.878431, 1 )
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color( 0.956863, 0.921569, 0.921569, 1 )
-border_blend = true
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color( 0.890196, 0.886275, 0.886275, 0.6 )
-shadow_size = 10
-
 [sub_resource type="DynamicFont" id=15]
 size = 80
 font_data = ExtResource( 2 )
@@ -265,6 +250,7 @@ size = 23
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=18]
+size = 25
 font_data = ExtResource( 2 )
 
 [node name="Level_2" type="Node"]
@@ -499,16 +485,7 @@ margin_bottom = 824.0
 custom_fonts/font = SubResource( 10 )
 text = "X"
 
-[node name="score_background" type="Label" parent="."]
-visible = false
-margin_left = 358.0
-margin_top = 52.0
-margin_right = 1585.0
-margin_bottom = 1006.0
-custom_styles/normal = SubResource( 17 )
-
 [node name="Score2" type="Label" parent="."]
-visible = false
 anchor_right = 0.536
 anchor_bottom = 0.252
 margin_left = 504.0
@@ -522,7 +499,6 @@ align = 1
 valign = 1
 
 [node name="levelScore" type="Label" parent="."]
-visible = false
 margin_left = 673.0
 margin_top = 470.0
 margin_right = 1275.0

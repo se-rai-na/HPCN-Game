@@ -48,6 +48,8 @@ var change_4 = false
 var main_scene
 signal comp_3
 
+#signal _complete
+
 func _ready():
 	#sets main scene to return when level is done
 	main_scene = get_node(get_parent().get_path())
@@ -83,6 +85,8 @@ func _process(delta):
 	
 	#processes complete level
 	if units_sent == units_required:
+		#emit_signal("_complete")
+		$HUD.scoreDisplay()
 		disable_buttons()
 		$Return.disabled = false
 		$Return.show()
@@ -350,3 +354,7 @@ func _on_C_Control_mouse_exited():
 func _on_Return_pressed():
 	main_scene._comp(3)
 	self.queue_free()
+
+
+func _on_Node_tree_entered():
+	pass # Replace with function body.

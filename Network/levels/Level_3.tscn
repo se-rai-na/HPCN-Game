@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://levels/Level_3.gd" type="Script" id=1]
 [ext_resource path="res://images/watersource.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://images/sad_icon.png" type="Texture" id=24]
 [ext_resource path="res://images/happy_icon.png" type="Texture" id=25]
 [ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=26]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=27]
 
 [sub_resource type="DynamicFont" id=6]
 size = 40
@@ -424,6 +425,8 @@ font_data = ExtResource( 16 )
 
 [node name="Level_3" type="Node"]
 script = ExtResource( 1 )
+
+[node name="HUD" parent="." instance=ExtResource( 27 )]
 
 [node name="Watersource" type="Sprite" parent="."]
 position = Vector2( 184, 832 )
