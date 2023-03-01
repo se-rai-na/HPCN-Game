@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://levels/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
@@ -18,7 +18,7 @@
 [ext_resource path="res://images/happy_icon.png" type="Texture" id=16]
 [ext_resource path="res://images/water_animation/full_2/full_cap_2.tres" type="Texture" id=17]
 [ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=18]
-[ext_resource path="res://resources/score_label.tres" type="StyleBox" id=19]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=19]
 [ext_resource path="res://images/water_animation/shower_low/shower_low.tres" type="Texture" id=21]
 [ext_resource path="res://images/water_animation/shower_high/shower_high.tres" type="Texture" id=22]
 
@@ -237,20 +237,8 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=15]
-size = 80
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=16]
-size = 70
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=9]
 size = 23
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=18]
-size = 25
 font_data = ExtResource( 2 )
 
 [node name="Level_2" type="Node"]
@@ -258,6 +246,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 20.0 ]
 }
+
+[node name="HUD" parent="." instance=ExtResource( 19 )]
 
 [node name="Watersource" type="Sprite" parent="."]
 position = Vector2( 216, 680 )
@@ -485,30 +475,6 @@ margin_bottom = 824.0
 custom_fonts/font = SubResource( 10 )
 text = "X"
 
-[node name="Score2" type="Label" parent="."]
-anchor_right = 0.536
-anchor_bottom = 0.252
-margin_left = 504.0
-margin_top = 92.0
-margin_right = 421.88
-margin_bottom = 19.84
-custom_fonts/font = SubResource( 15 )
-custom_styles/normal = ExtResource( 19 )
-text = "level complete!"
-align = 1
-valign = 1
-
-[node name="levelScore" type="Label" parent="."]
-margin_left = 673.0
-margin_top = 470.0
-margin_right = 1275.0
-margin_bottom = 650.0
-custom_colors/font_color = Color( 0.317647, 0.0352941, 0.0352941, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 16 )
-align = 1
-valign = 1
-
 [node name="Return" type="Button" parent="."]
 margin_left = 832.0
 margin_top = 880.0
@@ -517,15 +483,6 @@ margin_bottom = 960.0
 custom_fonts/font = SubResource( 9 )
 disabled = true
 text = "RETURN TO HOME"
-
-[node name="timer_display" type="Label" parent="."]
-anchor_right = 0.021
-anchor_bottom = 0.013
-margin_left = 1595.0
-margin_top = 45.0
-margin_right = 1840.68
-margin_bottom = 135.96
-custom_fonts/font = SubResource( 18 )
 
 [connection signal="mouse_entered" from="Shower/S_Control" to="." method="_on_S_Control_mouse_entered"]
 [connection signal="mouse_exited" from="Shower/S_Control" to="." method="_on_S_Control_mouse_exited"]

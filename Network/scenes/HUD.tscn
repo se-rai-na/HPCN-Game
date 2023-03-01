@@ -32,7 +32,7 @@ func scoreDisplay(var maxScore, var minSecs):
 	set_process(false)
 	#calculate score based on the time it took
 	var score = calculateScore(maxScore, minSecs, timeResult)
-	#$score.text = \"works\"
+	$Display/score.text = \"Score: \" + str(score)
 	$Display/score.show()
 	
 func calculateScore(var maxScore, var minSecs, var timeResult):

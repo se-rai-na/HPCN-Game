@@ -34,13 +34,15 @@ var change_2 = false
 var units_sent = 0
 var units_required = 2
 
-#to calculate the score
-var clicks = 0
-var score = 0
-
 #scene management
 var main_scene
 signal comp_2
+
+#to generate a score 
+#highest possible score in the level
+var maxScore = 40
+#highest time at completion to still get the highest score
+var minSecs = 15
 
 func _ready():
 	#sets main scene to return when level is done
@@ -61,11 +63,6 @@ func _process(delta):
 	$Cost/Top_cost.text = "Cost: " + str(top_cost)
 	$Cost/Bottom_cost.text = "Cost: " + str(bottom_cost)
 	
-	#updates the timer
-	
-	timer = timer + delta
-	$timer_display.text = "Time: " + str(round(timer)) + "s."
-	
 	#tooltps follow mouse
 	$Tooltips/P1_Panel.rect_global_position = get_viewport().get_mouse_position()
 	$Tooltips/P2_Panel.rect_global_position = get_viewport().get_mouse_position()
@@ -73,35 +70,12 @@ func _process(delta):
 	
 	#processes level completion
 	if units_sent == units_required:
-		#call function to display score
-		showResults()
-		#remove process function from scene tree
-		set_process(false)
-
-#calculates the score for a level
-#best case: only needed 2 clicks = 5 points
-#each additional pair of clicks leads to 1 point subtracted
-func calculateScore(var time):
-	#highest score if level completed in 10sec or less
-	if time <= 10:
-		score = 40
-	#1 point reduction for each additional second
-	#players get 5 points for just completing the level
-	else:
-		score = 40 - (time - 10)
-		if score < 5:
-			score = 5
+		$HUD.scoreDisplay(maxScore, minSecs)
+		disable_buttons()
+		$Return.disabled = false
+		$Return.show()
+		$Message.text = "Level complete!"
 	
-func showResults():
-	var timeResult = round(timer)
-	disable_buttons()
-	calculateScore(timeResult)
-	$Return.disabled = false
-	$Return.show()
-	$Message.text = "Level complete!"
-	$Score2.show()
-	$levelScore.text = "Score: " + str(score)
-	$levelScore.show()
 		
 func control_top():
 	#starts water animation on top route
@@ -185,22 +159,19 @@ func enable_buttons():
 func _on_Top_plus_pressed():
 	if top_cost < 10:
 		top_cost = top_cost + 1
-		clicks = clicks + 1
 
 func _on_Top_minus_pressed():
 	if top_cost != 1:
 		top_cost = top_cost - 1
-		clicks = clicks + 1
 
 func _on_Bottom_plus_pressed():
 	if bottom_cost < 10:
 		bottom_cost = bottom_cost + 1
-		clicks = clicks + 1
 
 func _on_Bottom_minus_pressed():
 	if bottom_cost != 1:
 		bottom_cost = bottom_cost - 1
-		clicks = clicks + 1
+
 
 #tooltip controls
 #hint
