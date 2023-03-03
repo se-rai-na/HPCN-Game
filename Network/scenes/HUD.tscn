@@ -45,7 +45,9 @@ func calculateScore(var maxScore, var minSecs, var timeResult):
 	#one point for each second is subtracted
 	#you get at least 5 points for completing the game though
 	else:
-		score = maxScore - (timeResult - minSecs)
+		#score = maxScore - (timeResult - minSecs)
+		var seconds = timeResult - 10
+		score = round((0.0025*pow(-seconds, 3) + maxScore))
 		if score < 5:
 			score = 5
 	return score
@@ -79,4 +81,7 @@ margin_right = 1238.0
 margin_bottom = 612.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = ExtResource( 1 )
-text = "Hello it works"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
