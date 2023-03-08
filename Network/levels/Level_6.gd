@@ -51,7 +51,6 @@ var change_4 = false
 #scene management
 var main_scene
 signal comp_6
-
 #highest possible score in the level
 var maxScore = 65
 #highest time at completion to still get the highest score

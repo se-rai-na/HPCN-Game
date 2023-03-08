@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://images/pipes/curved_3_cap_4.png" type="Texture" id=1]
 [ext_resource path="res://images/connector.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://images/pipes/end_right_cap_4.png" type="Texture" id=28]
 [ext_resource path="res://images/water_animation/cap_2/cap_2.tres" type="Texture" id=29]
 [ext_resource path="res://images/pipes/end_bottom_cap_2.png" type="Texture" id=30]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=31]
 [ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=32]
 
 [sub_resource type="DynamicFont" id=5]
@@ -415,6 +416,8 @@ font_data = ExtResource( 20 )
 
 [node name="Level_4" type="Node"]
 script = ExtResource( 18 )
+
+[node name="HUD" parent="." instance=ExtResource( 31 )]
 
 [node name="Watersource" type="Sprite" parent="."]
 position = Vector2( 296, 472 )
