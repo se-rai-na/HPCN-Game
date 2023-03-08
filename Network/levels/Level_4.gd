@@ -47,6 +47,11 @@ var change_4 = false
 var main_scene
 signal comp_4
 
+#highest possible score in the level
+var maxScore = 55
+#highest time at completion to still get the highest score
+var minSecs = 40
+
 func _ready():
 	#sets main scene to return when level is done
 	main_scene = get_node(get_parent().get_path())
@@ -82,6 +87,7 @@ func _process(delta):
 	
 	#processes complete level
 	if units_sent == units_required:
+		$HUD.scoreDisplay(maxScore, minSecs)
 		disable_buttons()
 		$Return.disabled = false
 		$Return.show()
