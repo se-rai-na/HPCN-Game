@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://images/background.png" type="Texture" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/Register.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 64
@@ -23,25 +28,41 @@ font_data = ExtResource( 2 )
 size = 30
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 2 )
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = -0.001
 anchor_right = 0.999
 anchor_bottom = 0.998
-margin_left = -0.0799999
+margin_left = 2.92
 margin_top = -2.0
-margin_right = -0.0800781
+margin_right = 2.91992
 margin_bottom = 0.159912
 texture = ExtResource( 1 )
 
-[node name="Label" type="Label" parent="."]
+[node name="message" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -4.0
-margin_bottom = -751.0
+margin_left = 692.0
+margin_top = 226.0
+margin_right = -639.0
+margin_bottom = -727.0
+custom_fonts/font = SubResource( 7 )
+
+[node name="register" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = -5.0
+margin_right = -1.0
+margin_bottom = -756.0
 custom_fonts/font = SubResource( 3 )
 text = "Register"
 align = 1
@@ -118,3 +139,15 @@ password"
 align = 1
 valign = 1
 uppercase = true
+
+[node name="send" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 894.0
+margin_top = 890.0
+margin_right = -831.0
+margin_bottom = -105.0
+custom_fonts/font = SubResource( 6 )
+text = "Send"
+
+[connection signal="pressed" from="send" to="." method="_on_Button_pressed"]
