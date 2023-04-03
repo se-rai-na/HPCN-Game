@@ -4,6 +4,8 @@ extends Node
 var usernameInput
 var passwordInput
 
+signal logged_in
+
 func _ready():
 	print("Scen started")
 		
@@ -21,13 +23,6 @@ func check_login():
 	var credentials = JSON.parse(contents).result
 	print(credentials["aniares"])
 	var _input
-	# Get the current input from the line edit node that emitted the signal
-	#if _lineEdit != null:
-	#	_input = _lineEdit.text
-	#else:
-	#	_input = usernameInput
-	#	print("LineEdit is null")
-	#	return
 
 	# Check if the current input matches any valid username/password pairs
 	if credentials.has(usernameInput) and credentials[usernameInput] == passwordInput:
@@ -46,8 +41,6 @@ func _on_send_pressed():
 
 	
 	# Find the usernameInput and passwordInput nodes by name
-	usernameInput = get_node("usernameInput")
-	passwordInput = get_node("passwordInput")
 	usernameInput = $usernameInput.get_text()
 	passwordInput = $passwordInput.get_text()
 	print(usernameInput)
@@ -56,7 +49,15 @@ func _on_send_pressed():
 	#usernameInput.connect("text_entered", self, "check_login")
 	#passwordInput.connect("text_entered", self, "check_login")
 	check_login()
+	#if log in is correct
+	emit_signal("logged_in")
 
 
 func _on_newAccount_pressed():
 	add_child(load("res://scenes/Register.tscn").instance())
+	
+
+
+
+func display():
+	pass # Replace with function body.

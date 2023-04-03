@@ -3,7 +3,7 @@
 
 extends Node
 
-#connects to LevelSelectionScreen :: display()
+#connects to LevelSelectionScreen :: dispay()
 #moves to level selection screen
 signal level
 

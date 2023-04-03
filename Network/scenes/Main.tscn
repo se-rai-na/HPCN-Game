@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/StartScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Login.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/LevelManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://images/background.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Main.gd" type="Script" id=5]
 [ext_resource path="res://scenes/PauseScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Register.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node"]
 script = ExtResource( 5 )
@@ -24,8 +26,12 @@ texture = ExtResource( 4 )
 
 [node name="PauseScreen" parent="." instance=ExtResource( 6 )]
 
+[node name="Login" parent="." instance=ExtResource( 2 )]
+
+[node name="Register" parent="." instance=ExtResource( 7 )]
+
 [connection signal="level" from="." to="LevelSelectionScreen" method="display"]
-[connection signal="play_pressed" from="StartScreen" to="LevelSelectionScreen" method="display"]
+[connection signal="play_pressed" from="StartScreen" to="Login" method="display"]
 [connection signal="back_pressed" from="LevelSelectionScreen" to="StartScreen" method="_ready"]
 [connection signal="eight_pressed" from="LevelSelectionScreen" to="." method="level_8"]
 [connection signal="five_pressed" from="LevelSelectionScreen" to="." method="level_5"]
