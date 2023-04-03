@@ -44,3 +44,4 @@ texture = ExtResource( 4 )
 [connection signal="three_pressed" from="LevelSelectionScreen" to="." method="level_3"]
 [connection signal="two_pressed" from="LevelSelectionScreen" to="." method="level_2"]
 [connection signal="exit_pause" from="PauseScreen" to="." method="_on_PauseScreen_exit_pause"]
+[connection signal="logged_in" from="Login" to="LevelSelectionScreen" method="_on_Login_logged_in"]

@@ -7,7 +7,7 @@ var passwordInput
 signal logged_in
 
 func _ready():
-	print("Scen started")
+	print("Scene started")
 		
 func check_login():
 	print("check_login called")

@@ -175,3 +175,7 @@ func _on_lvl10_pressed():
 	emit_signal("ten_pressed")
 	hide_buttons()
 	hide_checks()
+
+
+func _on_Login_logged_in():
+	pass # Replace with function body.
