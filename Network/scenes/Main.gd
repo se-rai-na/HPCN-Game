@@ -19,7 +19,6 @@ var active_7 = false
 var active_8 = false
 var active_9 = false
 var active_10 = false
-
 #level functions
 #each one is connected to the respective function from the LevelSelectionScreen node
 #the pause screen is enabled to allow the user to pause the game while within a level

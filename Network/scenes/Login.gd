@@ -1,13 +1,16 @@
-extends Node
+#Seraina Burge
+#March 2023
+#Login script
 
+extends Node
 # Declare variables for our two line edit nodes
 var usernameInput
 var passwordInput
 
 signal logged_in
+signal register
 
-func _ready():
-	print("Scene started")
+
 		
 func check_login():
 	print("check_login called")
@@ -50,14 +53,40 @@ func _on_send_pressed():
 	#passwordInput.connect("text_entered", self, "check_login")
 	check_login()
 	#if log in is correct
+	#hide login nodes
+	hide()
+	#signal logged in
 	emit_signal("logged_in")
 
 
+
+#emits signal to register script when user creates new account
 func _on_newAccount_pressed():
-	add_child(load("res://scenes/Register.tscn").instance())
+	#emit signal to get the register scen
+	emit_signal("register")
+	#hide login elements
+	hide()
+
+func _on_StartScreen_play_pressed():
+	print("Login screen")
+	$login.show()
+	$newAccount.show()
+	$userName.show()
+	$usernameInput.show()
+	$password.show()
+	$passwordInput.show()
+	$loginSuccess.show()
+	$send.show()
+	
+func hide():
+	$login.hide()
+	$newAccount.hide()
+	$userName.hide()
+	$usernameInput.hide()
+	$password.hide()
+	$passwordInput.hide()
+	$loginSuccess.hide()
+	$send.hide()
 	
 
 
-
-func display():
-	pass # Replace with function body.

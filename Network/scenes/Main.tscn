@@ -11,7 +11,12 @@
 [node name="Main" type="Node"]
 script = ExtResource( 5 )
 
+[node name="Login" parent="." instance=ExtResource( 2 )]
+
+[node name="Register" parent="." instance=ExtResource( 7 )]
+
 [node name="background" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 0.998
 margin_left = 2.0
@@ -25,13 +30,12 @@ texture = ExtResource( 4 )
 [node name="LevelSelectionScreen" parent="." instance=ExtResource( 3 )]
 
 [node name="PauseScreen" parent="." instance=ExtResource( 6 )]
-
-[node name="Login" parent="." instance=ExtResource( 2 )]
-
-[node name="Register" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [connection signal="level" from="." to="LevelSelectionScreen" method="display"]
-[connection signal="play_pressed" from="StartScreen" to="Login" method="display"]
+[connection signal="logged_in" from="Login" to="LevelSelectionScreen" method="_on_Login_logged_in"]
+[connection signal="register" from="Login" to="Register" method="_on_Login_register"]
+[connection signal="play_pressed" from="StartScreen" to="Login" method="_on_StartScreen_play_pressed"]
 [connection signal="back_pressed" from="LevelSelectionScreen" to="StartScreen" method="_ready"]
 [connection signal="eight_pressed" from="LevelSelectionScreen" to="." method="level_8"]
 [connection signal="five_pressed" from="LevelSelectionScreen" to="." method="level_5"]
@@ -44,4 +48,3 @@ texture = ExtResource( 4 )
 [connection signal="three_pressed" from="LevelSelectionScreen" to="." method="level_3"]
 [connection signal="two_pressed" from="LevelSelectionScreen" to="." method="level_2"]
 [connection signal="exit_pause" from="PauseScreen" to="." method="_on_PauseScreen_exit_pause"]
-[connection signal="logged_in" from="Login" to="LevelSelectionScreen" method="_on_Login_logged_in"]
