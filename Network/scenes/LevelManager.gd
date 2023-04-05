@@ -1,5 +1,8 @@
 #Kirin Hardinger
 #Created July 2022
+#Seraina Burge
+#April 2023
+#Func: Added functionality needed for login/register of users
 
 extends Node
 
@@ -19,6 +22,9 @@ var flag_8 = false
 var flag_9 = false
 var flag_10 = false
 
+#gets username that is used to access file
+var username 
+
 #returns to StartScreen node
 signal back_pressed
 
@@ -36,18 +42,31 @@ signal nine_pressed
 signal ten_pressed
 
 func _ready():
+	print("LeveleSelectionReadyFunction")
 	hide_buttons()
 	hide_checks()
+	
+#appears when user is successfully logged in
+#or returns to the menu
+func _on_Login_logged_in():
+	print("LOGGED IN LEVEL SELECTION")
 	if not debug:
-		$lvl2.disabled = true
-		$lvl3.disabled = true
-		$lvl4.disabled = true
-		$lvl5.disabled = true
-		$lvl6.disabled = true
-		$lvl7.disabled = true
-		$lvl8.disabled = true
-		$lvl9.disabled = true
-		$lvl10.disabled = true
+		#check status of all levels
+		set_level_status()
+	#display the level buttons
+	display()
+		
+#flags each level depending on completed/ not completed
+func set_level_status():
+	$lvl2.disabled = true
+	$lvl3.disabled = true
+	$lvl4.disabled = true
+	$lvl5.disabled = true
+	$lvl6.disabled = true
+	$lvl7.disabled = true
+	$lvl8.disabled = true
+	$lvl9.disabled = true
+	$lvl10.disabled = true
 
 func display():
 	show_buttons()
@@ -177,5 +196,3 @@ func _on_lvl10_pressed():
 	hide_checks()
 
 
-func _on_Login_logged_in():
-	pass # Replace with function body.

@@ -25,7 +25,7 @@ func _ready():
 	#color on pressed
 	$playButton.set("custom_colors/font_color_pressed", pressed_color)
 
-func _on_playButton_pressed():
+func _on_button_pressed():
 	#moves to level selection screen
 	$playButton.hide()
 	emit_signal("play_pressed")

@@ -57,7 +57,9 @@ func _on_send_pressed():
 	hide()
 	#signal logged in
 	emit_signal("logged_in")
-
+	var next_scene = get_node("../LevelSelectionScreen")
+	#transmit username to the leveleSelectionScreen
+	next_scene.username = usernameInput
 
 
 #emits signal to register script when user creates new account
@@ -67,7 +69,7 @@ func _on_newAccount_pressed():
 	#hide login elements
 	hide()
 
-func _on_StartScreen_play_pressed():
+func _on_button_pressed():
 	print("Login screen")
 	$login.show()
 	$newAccount.show()
@@ -87,6 +89,3 @@ func hide():
 	$passwordInput.hide()
 	$loginSuccess.hide()
 	$send.hide()
-	
-
-

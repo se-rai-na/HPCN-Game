@@ -11,7 +11,7 @@ signal exit_pause
 
 #ui_cancel is ESC key
 #shows menu and pauses the scene
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("ui_cancel") and enable:
 		$Window.show()
 		get_tree().paused = true
