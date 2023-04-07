@@ -77,6 +77,9 @@ func level_10():
 #this sets the respective flag in the LevelSelectionScreen node which then allows the player to start the next level
 #the pause screen is disabled and the "level" signal is eted in order to show the level selection screen again
 func _comp(var level):
+	print("LEVEL COMPLETE")
+	print(str(level))
+	level += 1
 	$LevelSelectionScreen.set_flag(level)
 	$PauseScreen.disable()
 	emit_signal("level")
