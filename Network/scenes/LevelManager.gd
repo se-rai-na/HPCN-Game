@@ -3,6 +3,7 @@
 #Seraina Burge
 #April 2023
 #Func: Added functionality needed for login/register of users
+#optimized checkmark functions
 
 extends Node
 
@@ -16,17 +17,21 @@ var flags = []
 #dictionaries for the check mark nodes and level nodes
 var checkMarks = []
 var levels = []
+#dictionary for the score displat
+var scoreDisplay = []
 
 var level
 #gets username that is used to access file
 
 var level_data
 var file_path
+
 #there are 10 levels
 var max_level = 10
 
 #returns to StartScreen node
 signal back_pressed
+
 
 #signals that connect back to the respective function in the Main node
 #starts the respective level
@@ -42,17 +47,20 @@ signal nine_pressed
 signal ten_pressed
 
 func _ready():
-	var hud = get_node_or_null("HUD")
+	#var hud = get_node_or_null("HUD")
    # Store references to check mark nodes
-	for i in range(1, 11):
+	for i in range(1, max_level+1):
 		checkMarks.append(get_node("CheckMark" + str(i)))
 	# Store references to level nodes
-	for i in range(1, 11):
+	for i in range(1, max_level+1):
 		levels.append(get_node("lvl" + str(i)))
+	#Store references to score display nodes
+	for i in range(1, max_level+1):
+		scoreDisplay.append(get_node("UserScore"+str(i)))
 	#checks if one was found
-	if hud != null:
-		$Main.connect("new_data", self, "_on_player_value_added")
-		
+	#if hud != null:
+	SignalBus.connect("level_finished", self, "_on_player_value_added")
+
 	hide_buttons()
 	hide_checks()
 	# Loop through all child nodes of the current node
@@ -114,13 +122,13 @@ func get_user_data():
 	var json_string = file.get_as_text()
 	file.close()
 	level_data = JSON.parse(json_string).result
+	print(level_data) # Print the contents of level_data
 	
 #adds level data of newly played levels to the level_data array
 func _on_player_value_added(score, timer):
 	level_data[level-1]["time"] = timer
 	level_data[level-1]["score"] = score
 	print("NEW DATA: " + str(level_data[level-1]["time"] + str(level_data[level-1]["score"])))
-
 
 
 func display():
@@ -132,11 +140,15 @@ func display():
 			print("flag", i+1, "is true")
 			checkMarks[i].show()
 			levels[i].disabled = false
+			scoreDisplay[i].text = str(level_data[str(i+1)]["score"])
 		#make sure the new level does not have a checkmark
 		elif not flags[i] and flags[i - 1]:
 			checkMarks[i-1].hide()
+	#$UserScore1.text = str(level_data[str(1)]["score"])
+	#print(str(level_data[str(1)]["time"]))
 			
 	print("checked all")
+	print(level_data)
 
 #connects to StartScreen :: _ready()
 #returns to the start screen
@@ -147,10 +159,12 @@ func _on_X_pressed():
 
 func show_buttons():
 	get_tree().call_group("lvlButtons", "show")
+	get_tree().call_group("UserScore", "show")
 	$X.show()
 
 func hide_buttons():
 	get_tree().call_group("lvlButtons", "hide")
+	get_tree().call_group("UserScore", "hide")
 	$X.hide()
 
 func hide_checks():

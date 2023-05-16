@@ -59,7 +59,6 @@ func _on_send_pressed():
 	emit_signal("logged_in", usernameInput)
 
 
-
 #emits signal to register script when user creates new account
 func _on_newAccount_pressed():
 	#emit signal to get the register scen
