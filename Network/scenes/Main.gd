@@ -7,6 +7,9 @@ extends Node
 #moves to level selection screen
 signal level
 
+#loads dictionnary with the flags for the different levels and their respective scores
+
+
 #sets which level is active
 #used in _on_PauseScreen_exit_pause() function which exits the appropriate level when the user exits
 var active_1 = false
@@ -19,6 +22,9 @@ var active_7 = false
 var active_8 = false
 var active_9 = false
 var active_10 = false
+
+signal new_data 
+
 #level functions
 #each one is connected to the respective function from the LevelSelectionScreen node
 #the pause screen is enabled to allow the user to pause the game while within a level
@@ -78,12 +84,23 @@ func level_10():
 #the pause screen is disabled and the "level" signal is eted in order to show the level selection screen again
 func _comp(var level):
 	print("LEVEL COMPLETE")
+	#looks for any node called HUD in the current scene tree
+	var hud = get_node_or_null("HUD")
+	#checks if one was found
+	if hud != null:
+		#one is found so connect the signal to get the level data
+		hud.connect("score_updated", self, "_on_score_updated")
 	print(str(level))
+	#get to the next level
 	level += 1
+	#sets flag of completed game to completed
 	$LevelSelectionScreen.set_flag(level)
 	$PauseScreen.disable()
+	#sent to LevelSelectionScreen
 	emit_signal("level")
 
+func _on_score_updated(score, time):
+	emit_signal("new_data", score, time)
 #if the player chooses to pause the game within a level and exit the level before completing it, this function removes the instance of the scene
 #the scene then returns to the level selection screen
 func _on_PauseScreen_exit_pause():

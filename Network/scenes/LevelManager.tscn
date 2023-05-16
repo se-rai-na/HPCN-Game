@@ -103,7 +103,7 @@ margin_bottom = 128.0
 custom_fonts/font = SubResource( 2 )
 text = "X"
 
-[node name="CheckMark" type="Sprite" parent="." groups=["checks"]]
+[node name="CheckMark1" type="Sprite" parent="." groups=["checks"]]
 position = Vector2( 336, 256 )
 scale = Vector2( 0.244, 0.244 )
 texture = ExtResource( 3 )

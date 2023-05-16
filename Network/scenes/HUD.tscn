@@ -16,9 +16,11 @@ var score
 #onready var level = get_node('Node')
 # Called when the node enters the scene tree for the first time.
 #func _ready():
+signal level_finished(score, time)
 
 	#PlayerNode.connect(\"\", self, \"_process(delta)\")
-
+func _ready():
+	print(\"HUD added to scene tree.\")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	timer = timer + delta
@@ -34,6 +36,7 @@ func scoreDisplay(var maxScore, var minSecs):
 	var score = calculateScore(maxScore, minSecs, timeResult)
 	$Display/score.text = \"Score: \" + str(score)
 	$Display/score.show()
+	emit_signal(\"level_finished\", score, timeResult)
 	
 func calculateScore(var maxScore, var minSecs, var timeResult):
 	var score

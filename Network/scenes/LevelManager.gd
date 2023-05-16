@@ -13,8 +13,11 @@ var debug = false
 #unlocks the next level
 #Array that stores bool completion for each level
 var flags = []
+#dictionaries for the check mark nodes and level nodes
+var checkMarks = []
+var levels = []
 
-
+var level
 #gets username that is used to access file
 
 var level_data
@@ -39,7 +42,17 @@ signal nine_pressed
 signal ten_pressed
 
 func _ready():
-	print("LeveleSelectionReadyFunction")
+	var hud = get_node_or_null("HUD")
+   # Store references to check mark nodes
+	for i in range(1, 11):
+		checkMarks.append(get_node("CheckMark" + str(i)))
+	# Store references to level nodes
+	for i in range(1, 11):
+		levels.append(get_node("lvl" + str(i)))
+	#checks if one was found
+	if hud != null:
+		$Main.connect("new_data", self, "_on_player_value_added")
+		
 	hide_buttons()
 	hide_checks()
 	# Loop through all child nodes of the current node
@@ -49,7 +62,8 @@ func _ready():
 			# Disable the child node
 			child.set_disabled(true)
 	#$Login.connect("logged_in", self, "_on_Login_logged_in")
-	
+
+
 #appears when user is successfully logged in
 #or returns to the menu
 func _on_Login_logged_in(username):
@@ -100,44 +114,28 @@ func get_user_data():
 	var json_string = file.get_as_text()
 	file.close()
 	level_data = JSON.parse(json_string).result
+	
+#adds level data of newly played levels to the level_data array
+func _on_player_value_added(score, timer):
+	level_data[level-1]["time"] = timer
+	level_data[level-1]["score"] = score
+	print("NEW DATA: " + str(level_data[level-1]["time"] + str(level_data[level-1]["score"])))
+
+
 
 func display():
 	print("Display in LevelSelection")
 	show_buttons()
 	#checks for each levels
-	if flags[0]:
-		print("flag 1 is true")
-		$CheckMark.show()
-		$lvl1.disabled = false
-	if flags[1]:
-		print("flag 2 is true")
-		$CheckMark2.show()
-		$lvl2.disabled = false
-	if flags[2]:
-		print("flag 3 is true")
-		$CheckMark3.show()
-		$lvl3.disabled = false
-	if flags[3]:
-		$CheckMark4.show()
-		$lvl4.disabled = false
-	if flags[4]:
-		$CheckMark5.show()
-		$lvl5.disabled = false
-	if flags[5]:
-		$CheckMark6.show()
-		$lvl6.disabled = false
-	if flags[6]:
-		$CheckMark7.show()
-		$lvl7.disabled = false
-	if flags[7]:
-		$CheckMark8.show()
-		$lvl8.disabled = false
-	if flags[8]:
-		$CheckMark9.show()
-		$lvl9.disabled = false
-	if flags[9]:
-		$CheckMark10.show()
-		$lvl10.disable = false
+	for i in range (0, flags.size()):
+		if flags[i]:
+			print("flag", i+1, "is true")
+			checkMarks[i].show()
+			levels[i].disabled = false
+		#make sure the new level does not have a checkmark
+		elif not flags[i] and flags[i - 1]:
+			checkMarks[i-1].hide()
+			
 	print("checked all")
 
 #connects to StartScreen :: _ready()
@@ -159,7 +157,7 @@ func hide_checks():
 	get_tree().call_group("checks", "hide")
 	
 #called by _comp(var level) function in Main node
-func set_flag(var level):
+func set_flag(level):
 	match level:
 		1:
 			flags[0] = true
