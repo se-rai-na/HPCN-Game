@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://levels/Level_10.gd" type="Script" id=1]
 [ext_resource path="res://images/pipes/end_left_cap_2.png" type="Texture" id=2]
@@ -375,6 +375,158 @@
 6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
+7/name = "straight_cap_4.png 7"
+7/texture = ExtResource( 12 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 32, 64, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "straight_cap_4.png 8"
+8/texture = ExtResource( 12 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 64, 64 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+
+[sub_resource type="TileSet" id=17]
+0/name = "straight_cap_4.png 0"
+0/texture = ExtResource( 12 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 128, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=18]
+0/name = "straight_cap_4.png 0"
+0/texture = ExtResource( 12 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=19]
+0/name = "end_left_cap_4.png 0"
+0/texture = ExtResource( 16 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 192 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "end_right_cap_4.png 1"
+1/texture = ExtResource( 30 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 192 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=20]
+0/name = "upright_cap_4.png 0"
+0/texture = ExtResource( 11 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=21]
+0/name = "upright_cap_4.png 0"
+0/texture = ExtResource( 11 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 128, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=22]
+0/name = "end_top_cap_4.png 0"
+0/texture = ExtResource( 10 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "end_bottom_cap_4.png 1"
+1/texture = ExtResource( 13 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 192, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
 
 [sub_resource type="DynamicFont" id=11]
 size = 25
@@ -407,7 +559,7 @@ font_data = ExtResource( 17 )
 script = ExtResource( 1 )
 
 [node name="Watersource_3" type="Sprite" parent="."]
-position = Vector2( 922, 527 )
+position = Vector2( 935, 527 )
 scale = Vector2( 1, 0.984289 )
 texture = ExtResource( 5 )
 
@@ -424,7 +576,7 @@ margin_right = 77.0
 margin_bottom = 106.0
 
 [node name="Connector2" type="Sprite" parent="."]
-position = Vector2( 943, 165 )
+position = Vector2( 954, 171 )
 rotation = 3.14159
 scale = Vector2( 1.37124, 1.13525 )
 texture = ExtResource( 6 )
@@ -461,9 +613,10 @@ tile_set = SubResource( 2 )
 format = 1
 
 [node name="4" type="TileMap" parent="Water"]
+position = Vector2( 0, 32 )
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0 )
+tile_data = PoolIntArray( 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0 )
 
 [node name="5" type="TileMap" parent="Water"]
 tile_set = SubResource( 2 )
@@ -506,9 +659,10 @@ format = 1
 tile_data = PoolIntArray( 65540, 6, 0, 65541, 7, 0, 65542, 7, 0, 65543, 7, 0, 65544, 7, 0, 65545, 7, 0, 65546, 7, 0, 65547, 7, 0, 65548, 13, 0 )
 
 [node name="4" type="TileMap" parent="Pipes"]
+position = Vector2( 0, 32 )
 tile_set = SubResource( 9 )
 format = 1
-tile_data = PoolIntArray( 393220, 6, 0, 393221, 7, 0, 393222, 7, 0, 393223, 7, 0, 393224, 7, 0, 393225, 7, 0, 393226, 7, 0, 393227, 13, 0 )
+tile_data = PoolIntArray( 393219, 6, 0, 393220, 7, 0, 393221, 7, 0, 393222, 7, 0, 393223, 7, 0, 393224, 7, 0, 393225, 7, 0, 393226, 7, 0, 393227, 7, 0, 393228, 13, 0 )
 
 [node name="5" type="TileMap" parent="Pipes"]
 tile_set = SubResource( 9 )
@@ -526,6 +680,7 @@ format = 1
 tile_data = PoolIntArray( 262168, 10, 0, 327704, 9, 0, 393240, 9, 0, 458776, 9, 0, 524312, 9, 0, 589848, 9, 0, 655384, 9, 0, 720920, 9, 0, 786448, 6, 0, 786449, 7, 0, 786450, 7, 0, 786451, 7, 0, 786452, 7, 0, 786453, 7, 0, 786454, 7, 0, 786455, 7, 0, 786456, 8, 0 )
 
 [node name="8" type="TileMap" parent="Pipes"]
+visible = false
 position = Vector2( 25, 0 )
 scale = Vector2( 1.5, 1.5 )
 tile_set = SubResource( 10 )
@@ -533,10 +688,49 @@ format = 1
 tile_data = PoolIntArray( 11, 0, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 6, 0 )
 
 [node name="6" type="TileMap" parent="Pipes"]
-scale = Vector2( 1.5, 1.5 )
+visible = false
+position = Vector2( 110, 0 )
+scale = Vector2( 1.375, 1.5 )
 tile_set = SubResource( 10 )
 format = 1
 tile_data = PoolIntArray( 131080, 5, 0, 196616, 4, 0, 262152, 3, 0 )
+
+[node name="8b" type="TileMap" parent="Pipes"]
+tile_set = SubResource( 17 )
+format = 1
+tile_data = PoolIntArray( 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0 )
+
+[node name="8t" type="TileMap" parent="Pipes/8b"]
+position = Vector2( 0, -32 )
+tile_set = SubResource( 18 )
+format = 1
+tile_data = PoolIntArray( 65554, 0, 0, 65555, 0, 0, 65556, 0, 0, 65557, 0, 0, 65558, 0, 0, 65559, 0, 0 )
+
+[node name="8ends" type="TileMap" parent="Pipes/8b"]
+position = Vector2( 0, -57 )
+scale = Vector2( 1, 1.25 )
+tile_set = SubResource( 19 )
+format = 1
+tile_data = PoolIntArray( 65553, 0, 0, 65560, 1, 0 )
+
+[node name="6l" type="TileMap" parent="Pipes"]
+position = Vector2( 0, 10 )
+tile_set = SubResource( 20 )
+format = 1
+tile_data = PoolIntArray( 262157, 0, 0, 327693, 0, 0 )
+
+[node name="6r" type="TileMap" parent="Pipes/6l"]
+position = Vector2( 32, 0 )
+tile_set = SubResource( 21 )
+format = 1
+tile_data = PoolIntArray( 262159, 0, 0, 327695, 0, 0 )
+
+[node name="6ends" type="TileMap" parent="Pipes/6l"]
+position = Vector2( -216, 0 )
+scale = Vector2( 1.25, 1 )
+tile_set = SubResource( 22 )
+format = 1
+tile_data = PoolIntArray( 196621, 0, 0, 393229, 1, 0 )
 
 [node name="P_Control" type="Control" parent="Pipes"]
 margin_right = 40.0
@@ -547,6 +741,42 @@ margin_left = 55.0
 margin_top = 225.0
 margin_right = 145.0
 margin_bottom = 415.0
+
+[node name="P2_Control" type="Control" parent="Pipes/P_Control"]
+margin_left = 55.0
+margin_top = 600.0
+margin_right = 145.0
+margin_bottom = 790.0
+
+[node name="P3_Control" type="Control" parent="Pipes/P_Control"]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 800.0
+margin_bottom = 200.0
+
+[node name="P4_Control" type="Control" parent="Pipes/P_Control"]
+margin_left = 300.0
+margin_top = 415.0
+margin_right = 700.0
+margin_bottom = 525.0
+
+[node name="P5_Control" type="Control" parent="Pipes/P_Control"]
+margin_left = 300.0
+margin_top = 800.0
+margin_right = 800.0
+margin_bottom = 900.0
+
+[node name="P6_Control" type="Control" parent="Pipes/P_Control"]
+margin_left = 863.0
+margin_top = 237.0
+margin_right = 1025.0
+margin_bottom = 427.0
+
+[node name="P7_Control" type="Control" parent="Pipes/P_Control"]
+margin_left = 863.0
+margin_top = 610.0
+margin_right = 991.0
+margin_bottom = 800.0
 
 [node name="Cost" type="Control" parent="."]
 margin_right = 40.0
@@ -611,9 +841,9 @@ custom_fonts/font = SubResource( 13 )
 text = "-"
 
 [node name="6_cost" type="Label" parent="Cost"]
-margin_left = 950.0
+margin_left = 960.0
 margin_top = 305.0
-margin_right = 1182.0
+margin_right = 1192.0
 margin_bottom = 361.0
 custom_fonts/font = SubResource( 11 )
 text = "Cost: 4"
@@ -622,9 +852,9 @@ align = 1
 [node name="6_plus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 1050.0
+margin_left = 1060.0
 margin_top = 380.0
-margin_right = 1069.32
+margin_right = 1079.32
 margin_bottom = 408.12
 custom_fonts/font = SubResource( 12 )
 text = "+"
@@ -632,9 +862,9 @@ text = "+"
 [node name="6_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 1050.0
+margin_left = 1060.0
 margin_top = 245.0
-margin_right = 1066.32
+margin_right = 1076.32
 margin_bottom = 273.12
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
@@ -702,9 +932,9 @@ text = "-"
 
 [node name="4_cost" type="Label" parent="Cost"]
 margin_left = 400.0
-margin_top = 550.0
+margin_top = 582.0
 margin_right = 632.0
-margin_bottom = 606.0
+margin_bottom = 638.0
 custom_fonts/font = SubResource( 11 )
 text = "Cost: 2"
 align = 1
@@ -713,9 +943,9 @@ align = 1
 anchor_right = 0.017
 anchor_bottom = 0.022
 margin_left = 600.0
-margin_top = 550.0
+margin_top = 582.0
 margin_right = 619.32
-margin_bottom = 578.12
+margin_bottom = 610.12
 custom_fonts/font = SubResource( 12 )
 text = "+"
 
@@ -723,9 +953,9 @@ text = "+"
 anchor_right = 0.017
 anchor_bottom = 0.022
 margin_left = 400.0
-margin_top = 550.0
+margin_top = 582.0
 margin_right = 416.32
-margin_bottom = 578.12
+margin_bottom = 610.12
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
 text = "-"
@@ -837,59 +1067,177 @@ margin_bottom = 120.0
 custom_fonts/font = SubResource( 14 )
 autowrap = true
 
+[node name="P2_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 247.0
+margin_top = 253.0
+margin_right = 431.0
+margin_bottom = 389.0
+
+[node name="Label" type="Label" parent="Tooltips/P2_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 14 )
+autowrap = true
+
+[node name="P3_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 247.0
+margin_top = 253.0
+margin_right = 431.0
+margin_bottom = 389.0
+
+[node name="Label" type="Label" parent="Tooltips/P3_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 14 )
+autowrap = true
+
+[node name="P4_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 247.0
+margin_top = 253.0
+margin_right = 431.0
+margin_bottom = 389.0
+
+[node name="Label" type="Label" parent="Tooltips/P4_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 14 )
+autowrap = true
+
+[node name="P5_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 247.0
+margin_top = 253.0
+margin_right = 431.0
+margin_bottom = 389.0
+
+[node name="Label" type="Label" parent="Tooltips/P5_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 14 )
+autowrap = true
+
+[node name="P6_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 247.0
+margin_top = 253.0
+margin_right = 431.0
+margin_bottom = 389.0
+
+[node name="Label" type="Label" parent="Tooltips/P6_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 14 )
+autowrap = true
+
+[node name="P7_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 247.0
+margin_top = 253.0
+margin_right = 431.0
+margin_bottom = 389.0
+
+[node name="Label" type="Label" parent="Tooltips/P7_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 14 )
+autowrap = true
+
+[node name="P8_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 247.0
+margin_top = 253.0
+margin_right = 431.0
+margin_bottom = 389.0
+
+[node name="Label" type="Label" parent="Tooltips/P8_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 14 )
+autowrap = true
+
+[node name="P9_Panel" type="Panel" parent="Tooltips"]
+visible = false
+margin_left = 247.0
+margin_top = 253.0
+margin_right = 431.0
+margin_bottom = 389.0
+
+[node name="Label" type="Label" parent="Tooltips/P9_Panel"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 168.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 14 )
+autowrap = true
+
 [node name="Showers" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Shower1" type="Sprite" parent="Showers"]
-position = Vector2( -947, -723 )
+position = Vector2( -957, -699 )
 texture = ExtResource( 23 )
 offset = Vector2( 1080, 800 )
+flip_h = true
 
 [node name="S1_Control" type="Control" parent="Showers/Shower1"]
-margin_left = 1062.0
-margin_top = 797.0
-margin_right = 1188.0
-margin_bottom = 947.0
+margin_left = 1025.0
+margin_top = 759.0
+margin_right = 1151.0
+margin_bottom = 909.0
 
 [node name="High" type="Sprite" parent="Showers/Shower1"]
 visible = false
-position = Vector2( 1104, 872 )
+position = Vector2( 1070, 872 )
 z_index = 2
 texture = ExtResource( 20 )
 
 [node name="Low" type="Sprite" parent="Showers/Shower1"]
 visible = false
-position = Vector2( 1104, 872 )
+position = Vector2( 1080, 872 )
 z_index = 2
 texture = ExtResource( 18 )
 
 [node name="Soap" type="Sprite" parent="Showers/Shower1"]
-position = Vector2( 1120, 872 )
+position = Vector2( 1064, 880 )
 z_index = 1
 texture = ExtResource( 19 )
 
 [node name="Happy" type="Sprite" parent="Showers/Shower1"]
-visible = false
-position = Vector2( 1120, 880 )
+position = Vector2( 1066, 880 )
 texture = ExtResource( 22 )
 
 [node name="Sad" type="Sprite" parent="Showers/Shower1"]
-position = Vector2( 1120, 880 )
+position = Vector2( 1066, 880 )
 texture = ExtResource( 21 )
 
 [node name="Score" type="Label" parent="Showers/Shower1"]
-margin_left = 1024.0
-margin_top = 912.0
-margin_right = 1136.0
-margin_bottom = 950.0
+margin_left = 1064.0
+margin_top = 886.0
+margin_right = 1176.0
+margin_bottom = 924.0
 custom_fonts/font = SubResource( 1 )
-text = "
-"
 align = 1
 
 [node name="Shower2" type="Sprite" parent="Showers"]
-position = Vector2( 535, -668 )
+position = Vector2( 559, -664 )
 texture = ExtResource( 23 )
 offset = Vector2( 1080, 800 )
 
@@ -936,7 +1284,7 @@ text = "1/4"
 align = 1
 
 [node name="Shower3" type="Sprite" parent="Showers"]
-position = Vector2( -949, 110 )
+position = Vector2( -926, 66 )
 texture = ExtResource( 23 )
 offset = Vector2( 1080, 800 )
 
@@ -1002,6 +1350,18 @@ autowrap = true
 [connection signal="mouse_entered" from="Connector1/C1_Control" to="." method="_on_C1_Control_mouse_entered"]
 [connection signal="mouse_entered" from="Pipes/P_Control/P1_Control" to="." method="_on_P1_Control_mouse_entered"]
 [connection signal="mouse_exited" from="Pipes/P_Control/P1_Control" to="." method="_on_P1_Control_mouse_exited"]
+[connection signal="mouse_entered" from="Pipes/P_Control/P2_Control" to="." method="_on_P2_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Pipes/P_Control/P2_Control" to="." method="_on_P2_Control_mouse_exited"]
+[connection signal="mouse_entered" from="Pipes/P_Control/P3_Control" to="." method="_on_P3_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Pipes/P_Control/P3_Control" to="." method="_on_P3_Control_mouse_exited"]
+[connection signal="mouse_entered" from="Pipes/P_Control/P4_Control" to="." method="_on_P4_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Pipes/P_Control/P4_Control" to="." method="_on_P4_Control_mouse_exited"]
+[connection signal="mouse_entered" from="Pipes/P_Control/P5_Control" to="." method="_on_P5_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Pipes/P_Control/P5_Control" to="." method="_on_P5_Control_mouse_exited"]
+[connection signal="mouse_entered" from="Pipes/P_Control/P6_Control" to="." method="_on_P6_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Pipes/P_Control/P6_Control" to="." method="_on_P6_Control_mouse_exited"]
+[connection signal="mouse_entered" from="Pipes/P_Control/P7_Control" to="." method="_on_P7_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Pipes/P_Control/P7_Control" to="." method="_on_P7_Control_mouse_exited"]
 [connection signal="pressed" from="Cost/1_plus" to="." method="_on_1_plus_pressed"]
 [connection signal="pressed" from="Cost/1_minus" to="." method="_on_1_minus_pressed"]
 [connection signal="pressed" from="Cost/7_plus" to="." method="_on_7_plus_pressed"]

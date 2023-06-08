@@ -74,12 +74,18 @@ func _ready():
 		
 		
 		
-	_timer.set_wait_time(0.1)  
+	_timer.set_wait_time(0.12)  
 	_timer.start()
 
 	self.connect("change_route", self, "on_route_change")
 func _process(delta):
 	$Tooltips/P1_Panel.rect_global_position = get_viewport().get_mouse_position()
+	$Tooltips/P2_Panel.rect_global_position = get_viewport().get_mouse_position()
+	$Tooltips/P3_Panel.rect_global_position = get_viewport().get_mouse_position()
+	$Tooltips/P4_Panel.rect_global_position = get_viewport().get_mouse_position()
+	$Tooltips/P5_Panel.rect_global_position = get_viewport().get_mouse_position()
+	$Tooltips/P6_Panel.rect_global_position = get_viewport().get_mouse_position()
+	$Tooltips/P7_Panel.rect_global_position = get_viewport().get_mouse_position()
 	$Showers/Shower1/Score.text = str(units_sent_1 + units_sent_3) + "/3"
 	$Showers/Shower2/Score.text = str(units_sent_8 + units_sent_9) + "/4"
 	$Showers/Shower3/Score.text = str(units_sent_2 + units_sent_5) + "/1"
@@ -144,18 +150,20 @@ func on_route_change(new_route):
 	print("new route: ")
 	print(new_route)
 	if new_route in [2,3]:
-		$Water/"6".set_cell(13, 4, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
-		$Water/"6".set_cell(13, 5, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+		$Water/"6".set_cell(15, 4, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+		$Water/"6".set_cell(15, 5, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
 		$Water/"6".set_cell(14, 4, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
 		$Water/"6".set_cell(14, 5, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
 		sent_6 = true
 	elif new_route in [0,1]:
+		$Water/"4".set_cell(11, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))		
 		$Water/"4".set_cell(10, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
 		$Water/"4".set_cell(9, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
 		$Water/"4".set_cell(8, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
 		$Water/"4".set_cell(7, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))		
 		$Water/"4".set_cell(6, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
 		$Water/"4".set_cell(5, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
+		$Water/"4".set_cell(4, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))		
 		sent_4 = true
 		
 	active_routes.append(new_route)
@@ -316,21 +324,25 @@ func control_3():
 				if not 3 in active_routes:
 					active_routes.erase(2)
 					active_routes.append(3)
-	elif $Water/"3".get_cell(11, 2) != -1:
+	if not 2 in active_routes and not route_is_split[2] and $Water/"3".get_cell(11, 2) != -1:
 		$Water/"3".set_cell(x_3, 2, -1)
 		x_3 += 1
+	elif $Water/"3".get_cell(11, 2) == -1:
+		x_3 = 11
 		
 func control_4():
 	if 0 in active_routes:
 		for r in range(2,6):
 			if route_costs[0] > route_costs[r] and not r in active_routes and not route_is_split[r]:
 				if not 1 in active_routes:
+					$Water/"4".set_cell(4, 7, -1)					
 					$Water/"4".set_cell(5, 7, -1)
 					$Water/"4".set_cell(6, 7, -1)
 					$Water/"4".set_cell(7, 7, -1)
 					$Water/"4".set_cell(8, 7, -1)
 					$Water/"4".set_cell(9, 7, -1)
 					$Water/"4".set_cell(10, 7, -1)
+					$Water/"4".set_cell(11, 7, -1)					
 					sent_4 = false
 				$Water/"1".set_cell(1, 4, -1)
 				$Water/"1".set_cell(1, 5, -1)
@@ -342,12 +354,14 @@ func control_4():
 		for r in range(2,6):
 			if route_costs[1] > route_costs[r] and not r in active_routes and not route_is_split[r]:
 				if not 0 in active_routes:
+					$Water/"4".set_cell(4, 7, -1)					
 					$Water/"4".set_cell(5, 7, -1)
 					$Water/"4".set_cell(6, 7, -1)
 					$Water/"4".set_cell(7, 7, -1)
 					$Water/"4".set_cell(8, 7, -1)
 					$Water/"4".set_cell(9, 7, -1)
 					$Water/"4".set_cell(10, 7, -1)
+					$Water/"4".set_cell(11, 7, -1)					
 					$Water/"2".set_cell(1, 10, -1)
 					$Water/"2".set_cell(1, 11, -1)		
 					sent_2 = false
@@ -381,11 +395,13 @@ func control_5():
 			units_sent_5 = 0
 		elif not sent_5:
 			if $Water/"5".get_cell(5, 13) == -1:
+				disable_buttons()
 				$Water/"5".set_cell(x_5, 13, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 1"))
 				x_5 -= 1
 			else:
 				sent_5 = true
 				units_sent_5 = 2
+				enable_buttons()
 	elif $Water/"5".get_cell(11, 13) != -1:
 		$Water/"5".set_cell(x_5,13, -1)
 		x_5 += 1
@@ -397,8 +413,8 @@ func control_6():
 		for r in [0,1,4,5]:
 			if route_costs[2] > route_costs[r] and not r in active_routes and not route_is_split[r]:
 				if not 3 in active_routes:
-					$Water/"6".set_cell(13, 4, -1)
-					$Water/"6".set_cell(13, 5, -1)
+					$Water/"6".set_cell(15, 4, -1)
+					$Water/"6".set_cell(15, 5, -1)
 					$Water/"6".set_cell(14, 4, -1)
 					$Water/"6".set_cell(14, 5, -1)
 					sent_6 = false
@@ -410,8 +426,8 @@ func control_6():
 		for r in [0,1,4,5]:
 			if route_costs[3] > route_costs[r] and not r in active_routes and not route_is_split[r]:
 				if not 2 in active_routes:
-					$Water/"6".set_cell(13, 4, -1)
-					$Water/"6".set_cell(13, 5, -1)
+					$Water/"6".set_cell(15, 4, -1)
+					$Water/"6".set_cell(15, 5, -1)
 					$Water/"6".set_cell(14, 4, -1)
 					$Water/"6".set_cell(14, 5, -1)
 					sent_6 = false
@@ -517,6 +533,7 @@ func control_9():
 			sent_9 = false
 			units_sent_9 = 0
 		elif not sent_9:
+			disable_buttons()
 			if $Water/"9".get_cell(25, 13) == -1:
 				$Water/"9".set_cell(x_9, 13, $Water/"9".tile_set.find_tile_by_name("cap_2.tres 0"))
 				x_9 += 1
@@ -526,18 +543,60 @@ func control_9():
 			else:
 				sent_9 = true
 				units_sent_9 = 2
+				enable_buttons()
 	elif $Water/"9".get_cell(25, 13) != -1:
+		disable_buttons()
 		$Water/"9".set_cell(25,y_9, -1)
 		y_9 += 1
 	elif $Water/"9".get_cell(17, 13) != -1:
 		$Water/"9".set_cell(x_9,13, -1)
 		x_9 -= 1
 	else:
+		enable_buttons()
 		sent_9 = false
 		x_9 = 17
 		y_9 = 13
 					
 		
+func enable_buttons():
+	$Cost/"1_plus".disabled = false
+	$Cost/"1_minus".disabled = false
+	$Cost/"2_plus".disabled = false
+	$Cost/"2_minus".disabled = false
+	$Cost/"3_plus".disabled = false
+	$Cost/"3_minus".disabled = false
+	$Cost/"4_plus".disabled = false 
+	$Cost/"4_minus".disabled = false
+	$Cost/"5_plus".disabled = false
+	$Cost/"5_minus".disabled = false
+	$Cost/"6_plus".disabled = false
+	$Cost/"6_minus".disabled = false
+	$Cost/"7_plus".disabled = false 
+	$Cost/"7_minus".disabled = false
+	$Cost/"8_plus".disabled = false 
+	$Cost/"8_minus".disabled = false
+	$Cost/"9_plus".disabled = false 
+	$Cost/"9_minus".disabled = false
+	
+func disable_buttons():
+	$Cost/"1_plus".disabled = true
+	$Cost/"1_minus".disabled = true
+	$Cost/"2_plus".disabled = true
+	$Cost/"2_minus".disabled = true
+	$Cost/"3_plus".disabled = true
+	$Cost/"3_minus".disabled = true
+	$Cost/"4_plus".disabled = true 
+	$Cost/"4_minus".disabled = true
+	$Cost/"5_plus".disabled = true
+	$Cost/"5_minus".disabled = true
+	$Cost/"6_plus".disabled = true
+	$Cost/"6_minus".disabled = true
+	$Cost/"7_plus".disabled = true 
+	$Cost/"7_minus".disabled = true
+	$Cost/"8_plus".disabled = true 
+	$Cost/"8_minus".disabled = true
+	$Cost/"9_plus".disabled = true 
+	$Cost/"9_minus".disabled = true
 	
 
 
@@ -620,3 +679,53 @@ func _on_9_minus_pressed():
 func _on_Return_pressed():
 	main_scene._comp(10)
 	self.queue_free()
+
+
+func _on_P2_Control_mouse_entered():
+	$Tooltips/P2_Panel.show()
+	$Tooltips/P2_Panel/Label.text = "Pipes\n\nCost: " + str(cost_2) + "\nCapacity: 2"
+
+
+func _on_P2_Control_mouse_exited():
+	$Tooltips/P2_Panel.hide()
+
+
+func _on_P3_Control_mouse_entered():
+	$Tooltips/P3_Panel.show()
+	$Tooltips/P3_Panel/Label.text = "Pipes\n\nCost: " + str(cost_3) + "\nCapacity: 2"
+
+
+func _on_P3_Control_mouse_exited():
+	$Tooltips/P3_Panel.hide()
+
+
+func _on_P4_Control_mouse_entered():
+	$Tooltips/P4_Panel.show()
+	$Tooltips/P4_Panel/Label.text = "Pipes\n\nCost: " + str(cost_4) + "\nCapacity: 2"
+
+func _on_P4_Control_mouse_exited():
+	$Tooltips/P4_Panel.hide()
+
+
+func _on_P5_Control_mouse_entered():
+	$Tooltips/P5_Panel.show()
+	$Tooltips/P5_Panel/Label.text = "Pipes\n\nCost: " + str(cost_5) + "\nCapacity: 2"
+
+func _on_P5_Control_mouse_exited():
+	$Tooltips/P5_Panel.hide()
+
+
+func _on_P6_Control_mouse_entered():
+	$Tooltips/P6_Panel.show()
+	$Tooltips/P6_Panel/Label.text = "Pipes\n\nCost: " + str(cost_6) + "\nCapacity: 4"
+
+
+func _on_P6_Control_mouse_exited():
+	$Tooltips/P6_Panel.hide()
+	
+func _on_P7_Control_mouse_entered():
+	$Tooltips/P7_Panel.show()
+	$Tooltips/P7_Panel/Label.text = "Pipes\n\nCost: " + str(cost_7) + "\nCapacity: 2"
+
+func _on_P7_Control_mouse_exited():
+	$Tooltips/P7_Panel.hide()
