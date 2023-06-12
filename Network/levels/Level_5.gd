@@ -90,6 +90,7 @@ func _process(delta):
 	
 	#processes complete level
 	if  units_sent1 == units_required1 and units_sent2 == units_required2:
+		$HUD.level = 5
 		$HUD.scoreDisplay(maxScore, minSecs)
 		disable_buttons()
 		$Return.disabled = false

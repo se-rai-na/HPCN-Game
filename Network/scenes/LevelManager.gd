@@ -3,30 +3,36 @@
 #Seraina Burge
 #April 2023
 #Func: Added functionality needed for login/register of users
+#optimized checkmark functions
 
 extends Node
 
 #when true, allows playing any level without having to complete the previous one
-var debug = true
+var debug = false
 
 #flags for respective level completion
 #unlocks the next level
-var flag_1 = false
-var flag_2 = false
-var flag_3 = false
-var flag_4 = false
-var flag_5 = false
-var flag_6 = false
-var flag_7 = false
-var flag_8 = false
-var flag_9 = false
-var flag_10 = false
+#Array that stores bool completion for each level
+var flags = []
+#dictionaries for the check mark nodes and level nodes
+var checkMarks = []
+var levels = []
+#dictionary for the score displat
+var scoreDisplay = []
 
+var level
 #gets username that is used to access file
-var username 
+
+var level_data
+var file_path
+var highscore_data
+
+#there are 10 levels
+var max_level = 10
 
 #returns to StartScreen node
 signal back_pressed
+
 
 #signals that connect back to the respective function in the Main node
 #starts the respective level
@@ -42,64 +48,130 @@ signal nine_pressed
 signal ten_pressed
 
 func _ready():
-	print("LeveleSelectionReadyFunction")
+	get_highscore_data()
+	#var hud = get_node_or_null("HUD")
+   # Store references to check mark nodes
+	for i in range(1, max_level+1):
+		checkMarks.append(get_node("CheckMark" + str(i)))
+	# Store references to level nodes
+	for i in range(1, max_level+1):
+		levels.append(get_node("lvl" + str(i)))
+	#Store references to score display nodes
+	for i in range(1, max_level+1):
+		scoreDisplay.append(get_node("UserScore"+str(i)))
+	#checks if one was found
+	#if hud != null:
+	SignalBus.connect("level_finished", self, "_on_player_value_added", [], CONNECT_ONESHOT)
+
 	hide_buttons()
 	hide_checks()
-	
+	# Loop through all child nodes of the current node
+	for child in get_children():
+		# Check if the child node's name contains "lvl"
+		if "lvl" in child.get_name():
+			# Disable the child node
+			child.set_disabled(true)
+	#$Login.connect("logged_in", self, "_on_Login_logged_in")
+
+
 #appears when user is successfully logged in
 #or returns to the menu
-func _on_Login_logged_in():
-	print("LOGGED IN LEVEL SELECTION")
-	if not debug:
-		#check status of all levels
-		set_level_status()
+func _on_Login_logged_in(username):
+	file_path = "res://game_data/user_data/" + str(username) + ".json"
+	print("LOGGED IN LEVEL SELECTION " + str(username))
+	#if not debug:
+	#check status of all levels
+	set_level_status()
 	#display the level buttons
 	display()
 		
 #flags each level depending on completed/ not completed
 func set_level_status():
-	$lvl2.disabled = true
-	$lvl3.disabled = true
-	$lvl4.disabled = true
-	$lvl5.disabled = true
-	$lvl6.disabled = true
-	$lvl7.disabled = true
-	$lvl8.disabled = true
-	$lvl9.disabled = true
-	$lvl10.disabled = true
+	#deserialize json file with user data into a dictionary 
+	#within a dictionary
+	get_user_data()
+	print("Got user data")
+	print(str(level_data["1"]["time"]))
+	#check levels if the value for time is 0
+	#level has not been completed
+	var node_path
+	#used to get the current level the player is on
+	var newest_level = false
+	for i in range(0, max_level-1 + 1):
+		print("level" + str(i+1))
+		
+		if level_data[str(i+1)]["time"] != 0:
+			print(str(level_data[str(i+1)]["time"]))
+			#appends bool for level completion to flags array
+			flags.append(true)
+		else:
+			if not newest_level:
+				#level has not been played yet but is the current level
+				newest_level = true
+				#set flag to disable button to true
+				flags.append(true)
+			else:
+				#level has not been played yet and is not the current level
+				flags.append(false)
+
+
+#deserialized json file
+func get_user_data():
+	var file = File.new()
+	if file.open(file_path, File.READ) != OK:
+		print("File " + str(file_path) + " could not be opened.")
+		return
+	var json_string = file.get_as_text()
+	file.close()
+	level_data = JSON.parse(json_string).result
+	print(level_data) # Print the contents of level_data
+	
+#adds level data of newly played levels to the level_data array
+func _on_player_value_added(score, timer, level):
+	print("PLAYER VALUE ADDED")
+	print(level_data)
+	print("score" + str(score) + "time" + str(timer) + "level" + str(level)) 
+	level_data[str(level)]["time"] = timer
+	level_data[str(level)]["score"] = score
+	print(level_data)
+	save_dictionary_to_json()
+	
+func save_dictionary_to_json():
+	var json_data := JSON.print(level_data)
+	var file := File.new()
+	if file.open(file_path, File.WRITE) == OK:
+		file.store_string(json_data)
+		file.close()
+	else:
+		print("Failed to open file for writing:", file_path)
+	
 
 func display():
+	print("Display in LevelSelection")
 	show_buttons()
-	
-	if flag_1:
-		$CheckMark.show()
-		$lvl2.disabled = false
-	if flag_2:
-		$CheckMark2.show()
-		$lvl3.disabled = false
-	if flag_3:
-		$CheckMark3.show()
-		$lvl4.disabled = false
-	if flag_4:
-		$CheckMark4.show()
-		$lvl5.disabled = false
-	if flag_5:
-		$CheckMark5.show()
-		$lvl6.disabled = false
-	if flag_6:
-		$CheckMark6.show()
-		$lvl7.disabled = false
-	if flag_7:
-		$CheckMark7.show()
-		$lvl8.disabled = false
-	if flag_8:
-		$CheckMark8.show()
-		$lvl9.disabled = false
-	if flag_9:
-		$CheckMark9.show()
-		$lvl10.disabled = false
-	if flag_10:
-		$CheckMark10.show()
+	#checks for each levels
+	for i in range (0, flags.size()):
+		if flags[i]:
+			print("flag", i+1, "is true")
+			checkMarks[i].show()
+			levels[i].disabled = false
+			scoreDisplay[i].text = str(level_data[str(i+1)]["score"])
+		#make sure the new level does not have a checkmark
+		elif not flags[i] and flags[i - 1]:
+			checkMarks[i-1].hide()
+	var user = str(highscore_data["1"]["user"])
+	var score_user = str(highscore_data["1"]["score"])
+	$highScore1.text = user + ": " + score_user
+
+func get_highscore_data():
+	var file = File.new()
+	if file.open("res://game_data/highscore_tracker.json", File.READ) != OK:
+		print("File " + str(file_path) + " could not be opened.")
+		return
+	var json_string = file.get_as_text()
+	file.close()
+	highscore_data = JSON.parse(json_string).result
+	print(highscore_data)
 
 #connects to StartScreen :: _ready()
 #returns to the start screen
@@ -110,38 +182,42 @@ func _on_X_pressed():
 
 func show_buttons():
 	get_tree().call_group("lvlButtons", "show")
+	get_tree().call_group("UserScore", "show")
+	$highScore1.show()
 	$X.show()
 
 func hide_buttons():
 	get_tree().call_group("lvlButtons", "hide")
+	get_tree().call_group("UserScore", "hide")
+	$highScore1.hide()
 	$X.hide()
 
 func hide_checks():
 	get_tree().call_group("checks", "hide")
 	
 #called by _comp(var level) function in Main node
-func set_flag(var level):
+func set_flag(level):
 	match level:
 		1:
-			flag_1 = true
+			flags[0] = true
 		2:
-			flag_2 = true
+			flags[1] = true
 		3:
-			flag_3 = true
+			flags[2] = true
 		4:
-			flag_4 = true
+			flags[3] = true
 		5:
-			flag_5 = true
+			flags[4] = true
 		6:
-			flag_6 = true
+			flags[5] = true
 		7:
-			flag_7 = true
+			flags[6] = true
 		8:
-			flag_8 = true
+			flags[7]= true
 		9:
-			flag_9 = true
+			flags[8] = true
 		10:
-			flag_10 = true
+			flags[9] = true
 
 #on level buttons pressed
 #each one connects to the respective level function in the Main node to start the level

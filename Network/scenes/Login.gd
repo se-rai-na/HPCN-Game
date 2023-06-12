@@ -7,7 +7,7 @@ extends Node
 var usernameInput
 var passwordInput
 
-signal logged_in
+signal logged_in(username)
 signal register
 
 
@@ -55,11 +55,8 @@ func _on_send_pressed():
 	#if log in is correct
 	#hide login nodes
 	hide()
-	#signal logged in
-	emit_signal("logged_in")
-	var next_scene = get_node("../LevelSelectionScreen")
-	#transmit username to the leveleSelectionScreen
-	next_scene.username = usernameInput
+	#signal logged in and send the username
+	emit_signal("logged_in", usernameInput)
 
 
 #emits signal to register script when user creates new account
