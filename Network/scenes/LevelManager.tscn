@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
@@ -50,6 +50,10 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 20
 font_data = ExtResource( 2 )
 
 [node name="LevelSelectionScreen" type="Node"]
@@ -208,7 +212,6 @@ rect_pivot_offset = Vector2( 75, 87 )
 custom_fonts/font = SubResource( 3 )
 align = 1
 valign = 2
-percent_visible = -0.5
 
 [node name="UserScore2" type="Label" parent="." groups=["UserScore"]]
 anchor_right = 1.0
@@ -311,6 +314,19 @@ rect_min_size = Vector2( 50, 50 )
 custom_fonts/font = SubResource( 12 )
 align = 1
 valign = 2
+
+[node name="highScore1" type="Label" parent="."]
+anchor_left = 0.033
+anchor_top = 0.245
+anchor_right = 0.167
+anchor_bottom = 0.66
+margin_left = 2.64
+margin_top = 158.4
+margin_right = 2.35999
+margin_bottom = -220.8
+custom_fonts/font = SubResource( 13 )
+align = 1
+valign = 1
 
 [connection signal="pressed" from="lvl1" to="." method="_on_lvl1_pressed"]
 [connection signal="pressed" from="lvl2" to="." method="_on_lvl2_pressed"]

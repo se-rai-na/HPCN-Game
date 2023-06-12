@@ -25,6 +25,7 @@ var level
 
 var level_data
 var file_path
+var highscore_data
 
 #there are 10 levels
 var max_level = 10
@@ -47,6 +48,7 @@ signal nine_pressed
 signal ten_pressed
 
 func _ready():
+	get_highscore_data()
 	#var hud = get_node_or_null("HUD")
    # Store references to check mark nodes
 	for i in range(1, max_level+1):
@@ -59,7 +61,7 @@ func _ready():
 		scoreDisplay.append(get_node("UserScore"+str(i)))
 	#checks if one was found
 	#if hud != null:
-	SignalBus.connect("level_finished", self, "_on_player_value_added")
+	SignalBus.connect("level_finished", self, "_on_player_value_added", [], CONNECT_ONESHOT)
 
 	hide_buttons()
 	hide_checks()
@@ -125,11 +127,24 @@ func get_user_data():
 	print(level_data) # Print the contents of level_data
 	
 #adds level data of newly played levels to the level_data array
-func _on_player_value_added(score, timer):
-	level_data[level-1]["time"] = timer
-	level_data[level-1]["score"] = score
-	print("NEW DATA: " + str(level_data[level-1]["time"] + str(level_data[level-1]["score"])))
-
+func _on_player_value_added(score, timer, level):
+	print("PLAYER VALUE ADDED")
+	print(level_data)
+	print("score" + str(score) + "time" + str(timer) + "level" + str(level)) 
+	level_data[str(level)]["time"] = timer
+	level_data[str(level)]["score"] = score
+	print(level_data)
+	save_dictionary_to_json()
+	
+func save_dictionary_to_json():
+	var json_data := JSON.print(level_data)
+	var file := File.new()
+	if file.open(file_path, File.WRITE) == OK:
+		file.store_string(json_data)
+		file.close()
+	else:
+		print("Failed to open file for writing:", file_path)
+	
 
 func display():
 	print("Display in LevelSelection")
@@ -144,11 +159,19 @@ func display():
 		#make sure the new level does not have a checkmark
 		elif not flags[i] and flags[i - 1]:
 			checkMarks[i-1].hide()
-	#$UserScore1.text = str(level_data[str(1)]["score"])
-	#print(str(level_data[str(1)]["time"]))
-			
-	print("checked all")
-	print(level_data)
+	var user = str(highscore_data["1"]["user"])
+	var score_user = str(highscore_data["1"]["score"])
+	$highScore1.text = user + ": " + score_user
+
+func get_highscore_data():
+	var file = File.new()
+	if file.open("res://game_data/highscore_tracker.json", File.READ) != OK:
+		print("File " + str(file_path) + " could not be opened.")
+		return
+	var json_string = file.get_as_text()
+	file.close()
+	highscore_data = JSON.parse(json_string).result
+	print(highscore_data)
 
 #connects to StartScreen :: _ready()
 #returns to the start screen
@@ -160,11 +183,13 @@ func _on_X_pressed():
 func show_buttons():
 	get_tree().call_group("lvlButtons", "show")
 	get_tree().call_group("UserScore", "show")
+	$highScore1.show()
 	$X.show()
 
 func hide_buttons():
 	get_tree().call_group("lvlButtons", "hide")
 	get_tree().call_group("UserScore", "hide")
+	$highScore1.hide()
 	$X.hide()
 
 func hide_checks():

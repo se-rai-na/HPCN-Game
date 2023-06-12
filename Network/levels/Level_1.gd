@@ -23,7 +23,9 @@ var clicks = 0
 var main_scene
 signal comp_1
 
+
 func _ready():
+
 	#sets main scene to return when level is done
 	main_scene = get_node(get_parent().get_path())
 	
