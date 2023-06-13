@@ -30,19 +30,16 @@ func check_login():
 	# Check if the current input matches any valid username/password pairs
 	if credentials.has(usernameInput) and credentials[usernameInput] == passwordInput:
 		print("TRUE")
-		# Login successful!
-		$loginSuccess.text = "Login successful"
+		#Delete data from the input field
+		$passwordInput.clear()
+		$usernameInput.clear()
 		return
-
 	# If we get here, no matching username/password pair was found
 	else:
-		$loginSuccess.text = "Login unsuccessful"
 		$passwordInput.clear()
+		$usernameInput.clear()
 
 func _on_send_pressed():
-	print("check_login called1")
-
-	
 	# Find the usernameInput and passwordInput nodes by name
 	usernameInput = $usernameInput.get_text()
 	passwordInput = $passwordInput.get_text()

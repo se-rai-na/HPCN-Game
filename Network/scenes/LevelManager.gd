@@ -19,6 +19,7 @@ var checkMarks = []
 var levels = []
 #dictionary for the score displat
 var scoreDisplay = []
+var highScore = []
 
 var level
 #gets username that is used to access file
@@ -58,7 +59,8 @@ func _ready():
 		levels.append(get_node("lvl" + str(i)))
 	#Store references to score display nodes
 	for i in range(1, max_level+1):
-		scoreDisplay.append(get_node("UserScore"+str(i)))
+		scoreDisplay.append(get_node("UserScore"+(str(i))))
+		highScore.append(get_node("highScore"+(str(i))))
 	#checks if one was found
 	#if hud != null:
 	SignalBus.connect("level_finished", self, "_on_player_value_added", [], CONNECT_ONESHOT)
@@ -156,12 +158,16 @@ func display():
 			checkMarks[i].show()
 			levels[i].disabled = false
 			scoreDisplay[i].text = str(level_data[str(i+1)]["score"])
+			#var highscore_string = ""
+			var highscore_string = highscore_data[str(i+1)]["user"]
+			if len(highscore_string) != 0:
+				highScore[i].text = str(highscore_data[str(i+1)]["user"]) + ": " + str(highscore_data[str(i+1)]["score"]) 
 		#make sure the new level does not have a checkmark
 		elif not flags[i] and flags[i - 1]:
 			checkMarks[i-1].hide()
-	var user = str(highscore_data["1"]["user"])
-	var score_user = str(highscore_data["1"]["score"])
-	$highScore1.text = user + ": " + score_user
+	#var user = str(highscore_data["1"]["user"])
+	#var score_user = str(highscore_data["1"]["score"])
+	#$highScore1.text = user + ": " + score_user
 
 func get_highscore_data():
 	var file = File.new()
@@ -271,4 +277,9 @@ func _on_lvl10_pressed():
 	hide_buttons()
 	hide_checks()
 
-
+func _on_logout_pressed():
+	save_dictionary_to_json()
+	level_data = null
+	file_path = null
+	scoreDisplay = null
+	
