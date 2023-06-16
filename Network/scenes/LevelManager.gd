@@ -61,8 +61,7 @@ func _ready():
 	for i in range(1, max_level+1):
 		scoreDisplay.append(get_node("UserScore"+(str(i))))
 		highScore.append(get_node("highScore"+(str(i))))
-	#checks if one was found
-	#if hud != null:
+	#Connects to the HUD script in order to get the score values using a glibal signal
 	SignalBus.connect("level_finished", self, "_on_player_value_added", [], CONNECT_ONESHOT)
 
 	hide_buttons()
@@ -92,8 +91,6 @@ func set_level_status():
 	#deserialize json file with user data into a dictionary 
 	#within a dictionary
 	get_user_data()
-	print("Got user data")
-	print(str(level_data["1"]["time"]))
 	#check levels if the value for time is 0
 	#level has not been completed
 	var node_path
@@ -129,12 +126,12 @@ func get_user_data():
 	print(level_data) # Print the contents of level_data
 	
 #adds level data of newly played levels to the level_data array
-func _on_player_value_added(score, timer, level):
+func _on_player_value_added(score, timer, _level):
 	print("PLAYER VALUE ADDED")
 	print(level_data)
-	print("score" + str(score) + "time" + str(timer) + "level" + str(level)) 
-	level_data[str(level)]["time"] = timer
-	level_data[str(level)]["score"] = score
+	print("score" + str(score) + "time" + str(timer) + "level" + str(_level)) 
+	level_data[str(_level)]["time"] = timer
+	level_data[str(_level)]["score"] = score
 	print(level_data)
 	save_dictionary_to_json()
 	
@@ -202,8 +199,8 @@ func hide_checks():
 	get_tree().call_group("checks", "hide")
 	
 #called by _comp(var level) function in Main node
-func set_flag(level):
-	match level:
+func set_flag(_level):
+	match _level:
 		1:
 			flags[0] = true
 		2:
@@ -282,4 +279,7 @@ func _on_logout_pressed():
 	level_data = null
 	file_path = null
 	scoreDisplay = null
+	hide_buttons()
+	hide_checks()
+	emit_signal("back_pressed")
 	

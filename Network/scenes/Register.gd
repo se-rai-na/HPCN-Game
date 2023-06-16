@@ -7,6 +7,7 @@ extends Node
 var usernameInput
 var passwordInput
 var pwdInput
+var contents
 
 signal log_in
 
@@ -28,7 +29,7 @@ func check_username():
 	if file.open("res://game_data/user_database.json", File.READ) != OK:
 		print("Failed to open file")
 		return
-	var contents = file.get_as_text()
+	contents = file.get_as_text()
 	file.close()
 
 	# Parse the JSON file into a dictionary
@@ -36,6 +37,7 @@ func check_username():
 	if credentials.has(usernameInput):
 		$message.text = "Username is taken."
 		clearUserInput()
+	return
 #gets the user input when the user clicks send
 func _on_Button_pressed():
 	print("BUTTON PRESSED")
@@ -44,21 +46,30 @@ func _on_Button_pressed():
 	pwdInput = $passwordAgainInput.get_text()
 	#check password
 	check_password()
+	print("Username/password checked")
 	#if both username and password are valid creates a new file for the suer data
 	newUserFile()
+	print("new File generated")
 	#add user with username and password to the user database file
 	addUserDatabase()
+	print("added to user base")
 	#when everything is done, user is asked to log into account
-	emit_signal("log_in")
+	SignalBus._load_log_in()
+	hide()
 	
 #Creates a new JSON file for the user to save users fame data
 func newUserFile():
 	#creates a new file path with the username as the file name
 	var file_path = "res://game_data/user_data/" + usernameInput + ".json"
+	var json_data = {}
+	for i in range(1, 11):
+		json_data[str(i)] = {"time": 0, "score": 0}  
+	var json_text = JSON.print(json_data)
 	#creating a new file object
 	var file = File.new()
 	# Open the file in write mode
 	file.open(file_path, File.WRITE)
+	file.store_string(json_text)
 	# Close the file
 	file.close()
 	
@@ -68,25 +79,39 @@ func addUserDatabase():
 	var file_path = "res://game_data/user_database.json"
 	#create a new file object
 	var file = File.new()
-	#open the file in write mode
-	file.open(file_path, File.write)
-	#create a dictionary with the user info
-	var user_info = {
-		"username": usernameInput,
-		"password": passwordInput
-	}
-	#convert it to a JSON string
-	var json_string = JSON.print(user_info)
-	#append user_info to the file
-	file.append_string(json_string)
-	#close the file
-	file.close()
-	
+	var userData
+	#open the file in read mode to extract
+	if file.open(file_path, File.READ) == OK:
+		#extract contents as a dictionary
+		var jsonContent = file.get_as_text()
+		file.close()
+		#using JSON data to generate a dictionary
+		userData = JSON.parse(jsonContent).result
+		print(userData)
+		#adding the new username and its password
+		userData[str(usernameInput)] = str(passwordInput)
+	if file.open(file_path, File.WRITE) == OK:
+		#serializign json string
+		var json_string = JSON.print(userData)
+		#storing new data
+		file.store_string(json_string)
+		file.close()
 	
 func clearUserInput():
 	$userNameInput.clear()
 	$passwordInput.clear()
 	$passwordAgainInput.clear()
+
+func hide():
+	$message.hide()
+	$register.hide()
+	$userNameInput.hide()
+	$userName.hide()
+	$passwordInput.hide()
+	$password.hide()
+	$passwordAgain.hide()
+	$passwordAgainInput.hide()
+	$send.hide()
 	
 #show all the nodes when
 func _on_Login_register():

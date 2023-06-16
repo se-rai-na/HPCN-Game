@@ -11,7 +11,10 @@ signal logged_in(username)
 signal register
 
 
-		
+func _ready():
+	SignalBus.connect("log_in", self, "_on_button_pressed")
+	print("READY FUNCTION")
+	
 func check_login():
 	print("check_login called")
 	# Load the JSON file containing our valid usernames and passwords
@@ -24,7 +27,6 @@ func check_login():
 
 	# Parse the JSON file into a dictionary
 	var credentials = JSON.parse(contents).result
-	print(credentials["aniares"])
 	var _input
 
 	# Check if the current input matches any valid username/password pairs
