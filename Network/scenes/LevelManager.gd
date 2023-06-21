@@ -9,23 +9,27 @@ extends Node
 
 #when true, allows playing any level without having to complete the previous one
 var debug = false
-
+#current user logged in
+var user
 #flags for respective level completion
 #unlocks the next level
 #Array that stores bool completion for each level
 var flags = []
 #dictionaries for the check mark nodes and level nodes
-var checkMarks = []
-var levels = []
-#dictionary for the score displat
-var scoreDisplay = []
-var highScore = []
-
+var checkMark_nodes = []
+var level_nodes = []
+var crown_nodes = []
+var scoreDisplay_nodes = []
+var highScore_nodes = []
+#current level
 var level
-#gets username that is used to access file
-
+#dictionary that stores score and time for all the levels
 var level_data
+#file path for user data
 var file_path
+#file path for high score
+var filepath_highscore = "res://game_data/highscore_tracker.json"
+#dictionary for highscore data
 var highscore_data
 
 #there are 10 levels
@@ -53,14 +57,14 @@ func _ready():
 	#var hud = get_node_or_null("HUD")
    # Store references to check mark nodes
 	for i in range(1, max_level+1):
-		checkMarks.append(get_node("CheckMark" + str(i)))
+		checkMark_nodes.append(get_node("CheckMark" + str(i)))
 	# Store references to level nodes
-	for i in range(1, max_level+1):
-		levels.append(get_node("lvl" + str(i)))
+		level_nodes.append(get_node("lvl" + str(i)))
 	#Store references to score display nodes
-	for i in range(1, max_level+1):
-		scoreDisplay.append(get_node("UserScore"+(str(i))))
-		highScore.append(get_node("highScore"+(str(i))))
+		scoreDisplay_nodes.append(get_node("UserScore"+(str(i))))
+		highScore_nodes.append(get_node("highScore"+(str(i))))
+	#Store references to crown display
+		crown_nodes.append(get_node("lvl" + str(i) + "/crown" + str(i)))
 	#Connects to the HUD script in order to get the score values using a glibal signal
 	SignalBus.connect("level_finished", self, "_on_player_value_added", [], CONNECT_ONESHOT)
 
@@ -78,6 +82,7 @@ func _ready():
 #appears when user is successfully logged in
 #or returns to the menu
 func _on_Login_logged_in(username):
+	user = username
 	file_path = "res://game_data/user_data/" + str(username) + ".json"
 	print("LOGGED IN LEVEL SELECTION " + str(username))
 	#if not debug:
@@ -125,14 +130,12 @@ func get_user_data():
 	level_data = JSON.parse(json_string).result
 	print(level_data) # Print the contents of level_data
 	
-#adds level data of newly played levels to the level_data array
+#adds level data of newly played levels to the level_data array -> connects from HUD via SignalBus
 func _on_player_value_added(score, timer, _level):
-	print("PLAYER VALUE ADDED")
-	print(level_data)
-	print("score" + str(score) + "time" + str(timer) + "level" + str(_level)) 
 	level_data[str(_level)]["time"] = timer
 	level_data[str(_level)]["score"] = score
-	print(level_data)
+	check_highscore(score, timer, _level)
+	#print(level_data)
 	save_dictionary_to_json()
 	
 func save_dictionary_to_json():
@@ -152,16 +155,19 @@ func display():
 	for i in range (0, flags.size()):
 		if flags[i]:
 			print("flag", i+1, "is true")
-			checkMarks[i].show()
-			levels[i].disabled = false
-			scoreDisplay[i].text = str(level_data[str(i+1)]["score"])
+			checkMark_nodes[i].show()
+			level_nodes[i].disabled = false
+			scoreDisplay_nodes[i].text = str(level_data[str(i+1)]["score"])
 			#var highscore_string = ""
 			var highscore_string = highscore_data[str(i+1)]["user"]
 			if len(highscore_string) != 0:
-				highScore[i].text = str(highscore_data[str(i+1)]["user"]) + ": " + str(highscore_data[str(i+1)]["score"]) 
+				#shows message of highScore for levels that have been played before
+				highScore_nodes[i].text = str(highscore_data[str(i+1)]["user"]) + ": " + str(highscore_data[str(i+1)]["score"]) 
 		#make sure the new level does not have a checkmark
 		elif not flags[i] and flags[i - 1]:
-			checkMarks[i-1].hide()
+			checkMark_nodes[i-1].hide()
+	set_crown()
+	set_username()
 	#var user = str(highscore_data["1"]["user"])
 	#var score_user = str(highscore_data["1"]["score"])
 	#$highScore1.text = user + ": " + score_user
@@ -175,6 +181,41 @@ func get_highscore_data():
 	file.close()
 	highscore_data = JSON.parse(json_string).result
 	print(highscore_data)
+#checks if recent score is new highscore and adds it to the highscore 
+#if that is the case
+func check_highscore(score, timer, _level):
+	if highscore_data[str(_level)]["score"] < score:
+		highscore_data[str(_level)]["user"] = user
+		highscore_data[str(_level)]["score"] = score
+		highscore_data[str(_level)]["time"] = timer
+		save_new_highScore()
+	elif highscore_data[str(_level)]["score"] == score:
+		if highscore_data[str(_level)]["timer"] < timer:
+			highscore_data[str(_level)]["user"] = user
+			highscore_data[str(_level)]["score"] = score
+			highscore_data[str(_level)]["time"] = timer
+			save_new_highScore()
+		else:
+			return 
+func save_new_highScore():
+	var json := JSON.print(highscore_data)
+	var file = File.new()
+	if file.open(filepath_highscore, File.WRITE) == OK:
+		file.store_string(json)
+		file.close()
+	else:
+		print("Failed to open file for writing:", file_path)
+#checks if user has the global highscore in a level and 
+#makes the crown visible
+func set_crown():
+	for i in range(1, max_level-1 + 1):
+		if highscore_data[str(i)] ["user"] == user:
+			crown_nodes[i-1].show()
+			
+
+func set_username():
+	$username.text = "Hi, " + str(user) + "!"
+	$username.show()
 
 #connects to StartScreen :: _ready()
 #returns to the start screen
@@ -186,17 +227,18 @@ func _on_X_pressed():
 func show_buttons():
 	get_tree().call_group("lvlButtons", "show")
 	get_tree().call_group("UserScore", "show")
-	$highScore1.show()
-	$X.show()
+	get_tree().call_group("HighScore", "show")
 
 func hide_buttons():
 	get_tree().call_group("lvlButtons", "hide")
 	get_tree().call_group("UserScore", "hide")
-	$highScore1.hide()
+	get_tree().call_group("HighScore", "hide")
 	$X.hide()
 
 func hide_checks():
 	get_tree().call_group("checks", "hide")
+	get_tree().call_group("Crown", "hide")
+	$username.hide()
 	
 #called by _comp(var level) function in Main node
 func set_flag(_level):
@@ -278,7 +320,7 @@ func _on_logout_pressed():
 	save_dictionary_to_json()
 	level_data = null
 	file_path = null
-	scoreDisplay = null
+
 	hide_buttons()
 	hide_checks()
 	emit_signal("back_pressed")

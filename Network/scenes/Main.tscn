@@ -14,10 +14,9 @@ script = ExtResource( 5 )
 [node name="background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 0.998
-margin_left = 2.0
-margin_top = -2.0
-margin_right = 2.0
-margin_bottom = 0.159912
+margin_left = 3.0
+margin_right = 3.0
+margin_bottom = 2.15991
 texture = ExtResource( 4 )
 
 [node name="Login" parent="." instance=ExtResource( 2 )]
