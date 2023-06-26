@@ -21,6 +21,9 @@ var level_nodes = []
 var crown_nodes = []
 var scoreDisplay_nodes = []
 var highScore_nodes = []
+var star1_nodes = []
+var star2_nodes = []
+var star3_nodes = []
 #current level
 var level
 #dictionary that stores score and time for all the levels
@@ -29,6 +32,8 @@ var level_data
 var file_path
 #file path for high score
 var filepath_highscore = "res://game_data/highscore_tracker.json"
+#max scores for the levels
+var max_score = [25, 40, 50, 55, 60, 65, 70, 75, 80, 85]
 #dictionary for highscore data
 var highscore_data
 
@@ -57,7 +62,7 @@ func _ready():
 	#var hud = get_node_or_null("HUD")
    # Store references to check mark nodes
 	for i in range(1, max_level+1):
-		checkMark_nodes.append(get_node("CheckMark" + str(i)))
+		#checkMark_nodes.append(get_node("CheckMark" + str(i)))
 	# Store references to level nodes
 		level_nodes.append(get_node("lvl" + str(i)))
 	#Store references to score display nodes
@@ -65,6 +70,10 @@ func _ready():
 		highScore_nodes.append(get_node("highScore"+(str(i))))
 	#Store references to crown display
 		crown_nodes.append(get_node("lvl" + str(i) + "/crown" + str(i)))
+	#initiate star node
+		star1_nodes.append(get_node("lvl" + str(i) + "/Star1"))
+		star2_nodes.append(get_node("lvl" + str(i) + "/Star1/Star2"))
+		star3_nodes.append(get_node("lvl" + str(i) + "/Star1/Star3"))
 	#Connects to the HUD script in order to get the score values using a glibal signal
 	SignalBus.connect("level_finished", self, "_on_player_value_added", [], CONNECT_ONESHOT)
 
@@ -151,11 +160,18 @@ func save_dictionary_to_json():
 func display():
 	print("Display in LevelSelection")
 	show_buttons()
+	set_crown()
+	set_username()
+	set_checks()
+	set_star()
+
+func set_checks():
 	#checks for each levels
 	for i in range (0, flags.size()):
 		if flags[i]:
 			print("flag", i+1, "is true")
-			checkMark_nodes[i].show()
+			#checkMark_nodes[i].show()
+			star1_nodes[i].show()
 			level_nodes[i].disabled = false
 			scoreDisplay_nodes[i].text = str(level_data[str(i+1)]["score"])
 			#var highscore_string = ""
@@ -165,9 +181,8 @@ func display():
 				highScore_nodes[i].text = str(highscore_data[str(i+1)]["user"]) + ": " + str(highscore_data[str(i+1)]["score"]) 
 		#make sure the new level does not have a checkmark
 		elif not flags[i] and flags[i - 1]:
-			checkMark_nodes[i-1].hide()
-	set_crown()
-	set_username()
+			star1_nodes[i].show()
+			#checkMark_nodes[i-1].hide()
 	#var user = str(highscore_data["1"]["user"])
 	#var score_user = str(highscore_data["1"]["score"])
 	#$highScore1.text = user + ": " + score_user
@@ -216,6 +231,20 @@ func set_crown():
 func set_username():
 	$username.text = "Hi, " + str(user) + "!"
 	$username.show()
+
+func set_star():
+	for i in range(0, max_level-1 + 1):
+		print("number " + str(i))
+		var score = level_data[str(i+1)]["score"]
+		if score != 0:
+			var max_scores = max_score[i]
+			star1_nodes[i].show()
+			if score > max_scores / 3:
+				star2_nodes[i].show()
+			if score > max_scores * (2 / 3):
+				star3_nodes[i].show()
+		elif score == 0:
+			star1_nodes[i].hide()
 
 #connects to StartScreen :: _ready()
 #returns to the start screen

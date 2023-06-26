@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://images/check_mark.png" type="Texture" id=3]
 [ext_resource path="res://images/gradient_gold_royal_crown_v2 2.png" type="Texture" id=4]
+[ext_resource path="res://images/star3.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -124,6 +125,24 @@ rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
 
+[node name="Star1" type="Sprite" parent="lvl1"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl1/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl1/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
 [node name="lvl2" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 448.0
 margin_top = 264.0
@@ -137,6 +156,24 @@ position = Vector2( 3.0002, -10.0001 )
 rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
+
+[node name="Star1" type="Sprite" parent="lvl2"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl2/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl2/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
 
 [node name="lvl3" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 833.0
@@ -152,6 +189,24 @@ rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
 
+[node name="Star1" type="Sprite" parent="lvl3"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl3/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl3/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
 [node name="lvl4" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 1216.0
 margin_top = 264.0
@@ -165,6 +220,24 @@ position = Vector2( 3.0002, -10.0001 )
 rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
+
+[node name="Star1" type="Sprite" parent="lvl4"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl4/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl4/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
 
 [node name="lvl5" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 1600.0
@@ -180,6 +253,24 @@ rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
 
+[node name="Star1" type="Sprite" parent="lvl5"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl5/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl5/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
 [node name="lvl6" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 64.0
 margin_top = 712.0
@@ -193,6 +284,24 @@ position = Vector2( 3.0002, -10.0001 )
 rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
+
+[node name="Star1" type="Sprite" parent="lvl6"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl6/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl6/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
 
 [node name="lvl7" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 448.0
@@ -208,6 +317,24 @@ rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
 
+[node name="Star1" type="Sprite" parent="lvl7"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl7/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl7/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
 [node name="lvl8" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 832.0
 margin_top = 708.0
@@ -221,6 +348,24 @@ position = Vector2( 3.0002, -10.0001 )
 rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
+
+[node name="Star1" type="Sprite" parent="lvl8"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl8/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl8/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
 
 [node name="lvl9" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 1216.0
@@ -236,6 +381,24 @@ rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
 
+[node name="Star1" type="Sprite" parent="lvl9"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl9/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl9/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
 [node name="lvl10" type="Button" parent="." groups=["lvlButtons"]]
 margin_left = 1600.0
 margin_top = 712.0
@@ -249,6 +412,24 @@ position = Vector2( 3.0002, -10.0001 )
 rotation = -0.528835
 scale = Vector2( 0.00675, 0.0119736 )
 texture = ExtResource( 4 )
+
+[node name="Star1" type="Sprite" parent="lvl10"]
+visible = false
+position = Vector2( 186, -3 )
+scale = Vector2( 0.008, 0.008 )
+texture = ExtResource( 5 )
+
+[node name="Star2" type="Sprite" parent="lvl10/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 3750, -125 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Star3" type="Sprite" parent="lvl10/Star1" groups=["Star"]]
+visible = false
+position = Vector2( 8750, -375.002 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
 
 [node name="X" type="Button" parent="."]
 visible = false
