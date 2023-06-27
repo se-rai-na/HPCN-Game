@@ -78,7 +78,7 @@ func _ready():
 	SignalBus.connect("level_finished", self, "_on_player_value_added", [], CONNECT_ONESHOT)
 
 	hide_buttons()
-	hide_checks()
+
 	# Loop through all child nodes of the current node
 	for child in get_children():
 		# Check if the child node's name contains "lvl"
@@ -141,6 +141,7 @@ func get_user_data():
 	
 #adds level data of newly played levels to the level_data array -> connects from HUD via SignalBus
 func _on_player_value_added(score, timer, _level):
+	print("CALLED FOR LEVEL" + str(_level))
 	level_data[str(_level)]["time"] = timer
 	level_data[str(_level)]["score"] = score
 	check_highscore(score, timer, _level)
@@ -205,7 +206,7 @@ func check_highscore(score, timer, _level):
 		highscore_data[str(_level)]["time"] = timer
 		save_new_highScore()
 	elif highscore_data[str(_level)]["score"] == score:
-		if highscore_data[str(_level)]["timer"] < timer:
+		if highscore_data[str(_level)]["time"] < timer:
 			highscore_data[str(_level)]["user"] = user
 			highscore_data[str(_level)]["score"] = score
 			highscore_data[str(_level)]["time"] = timer
@@ -241,17 +242,17 @@ func set_star():
 			star1_nodes[i].show()
 			if score > max_scores / 3:
 				star2_nodes[i].show()
-			if score > max_scores * (2 / 3):
+			if score > max_scores / 3 * 2:
 				star3_nodes[i].show()
 		elif score == 0:
 			star1_nodes[i].hide()
 
 #connects to StartScreen :: _ready()
 #returns to the start screen
-func _on_X_pressed():
-	hide_buttons()
-	hide_checks()
-	emit_signal("back_pressed")
+#func _on_X_pressed():
+#	hide_buttons()
+#	hide_checks()
+#	emit_signal("back_pressed")
 
 func show_buttons():
 	get_tree().call_group("lvlButtons", "show")
@@ -262,13 +263,9 @@ func hide_buttons():
 	get_tree().call_group("lvlButtons", "hide")
 	get_tree().call_group("UserScore", "hide")
 	get_tree().call_group("HighScore", "hide")
-	$X.hide()
-
-func hide_checks():
-	get_tree().call_group("checks", "hide")
 	get_tree().call_group("Crown", "hide")
 	$username.hide()
-	
+
 #called by _comp(var level) function in Main node
 func set_flag(_level):
 	match _level:
@@ -297,60 +294,48 @@ func set_flag(_level):
 #each one connects to the respective level function in the Main node to start the level
 func _on_lvl1_pressed():
 	hide_buttons()
-	hide_checks()
 	emit_signal("one_pressed")
 
 func _on_lvl2_pressed():
 	hide_buttons()
-	hide_checks()
 	emit_signal("two_pressed")
 
 func _on_lvl3_pressed():
 	hide_buttons()
-	hide_checks()
 	emit_signal("three_pressed")
 
 func _on_lvl4_pressed():
 	hide_buttons()
-	hide_checks()
 	emit_signal("four_pressed")
 
 func _on_lvl5_pressed():
 	hide_buttons()
-	hide_checks()
 	emit_signal("five_pressed")
 
 func _on_lvl6_pressed():
 	emit_signal("six_pressed")
 	hide_buttons()
-	hide_checks()
 
 func _on_lvl7_pressed():
 	emit_signal("seven_pressed")
 	hide_buttons()
-	hide_checks()
 
 func _on_lvl8_pressed():
 	emit_signal("eight_pressed")
 	hide_buttons()
-	hide_checks()
 
 func _on_lvl9_pressed():
 	emit_signal("nine_pressed")
 	hide_buttons()
-	hide_checks()
 
 func _on_lvl10_pressed():
 	emit_signal("ten_pressed")
 	hide_buttons()
-	hide_checks()
 
 func _on_logout_pressed():
 	save_dictionary_to_json()
 	level_data = null
 	file_path = null
-
 	hide_buttons()
-	hide_checks()
 	emit_signal("back_pressed")
 	

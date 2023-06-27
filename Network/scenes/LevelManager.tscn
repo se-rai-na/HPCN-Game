@@ -1,16 +1,11 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://images/check_mark.png" type="Texture" id=3]
 [ext_resource path="res://images/gradient_gold_royal_crown_v2 2.png" type="Texture" id=4]
 [ext_resource path="res://images/star3.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 2 )
 
@@ -431,71 +426,6 @@ position = Vector2( 8750, -375.002 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="X" type="Button" parent="."]
-visible = false
-margin_left = 1657.0
-margin_top = 878.0
-margin_right = 1721.0
-margin_bottom = 942.0
-custom_fonts/font = SubResource( 2 )
-text = "X"
-
-[node name="CheckMark1" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 336, 256 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-
-[node name="CheckMark2" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 720, 256 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-
-[node name="CheckMark3" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 1048, 432 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-offset = Vector2( 229.507, -754.098 )
-
-[node name="CheckMark4" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 1488, 256 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-
-[node name="CheckMark5" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 1872, 256 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-
-[node name="CheckMark6" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( -152, 384 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-offset = Vector2( 2000, 1311.48 )
-
-[node name="CheckMark7" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 232, 384 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-offset = Vector2( 2000, 1311.48 )
-
-[node name="CheckMark8" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 616, 384 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-offset = Vector2( 2000, 1311.48 )
-
-[node name="CheckMark9" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 1000, 392 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-offset = Vector2( 2000, 1311.48 )
-
-[node name="CheckMark10" type="Sprite" parent="." groups=["checks"]]
-position = Vector2( 1384, 392 )
-scale = Vector2( 0.244, 0.244 )
-texture = ExtResource( 3 )
-offset = Vector2( 2000, 1311.48 )
-
 [node name="UserScore1" type="Label" parent="." groups=["UserScore"]]
 margin_left = 268.0
 margin_top = 346.0
@@ -769,4 +699,3 @@ valign = 1
 [connection signal="pressed" from="lvl8" to="." method="_on_lvl8_pressed"]
 [connection signal="pressed" from="lvl9" to="." method="_on_lvl9_pressed"]
 [connection signal="pressed" from="lvl10" to="." method="_on_lvl10_pressed"]
-[connection signal="pressed" from="X" to="." method="_on_X_pressed"]
