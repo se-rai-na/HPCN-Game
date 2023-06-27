@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/Login.gd" type="Script" id=3]
@@ -11,12 +11,16 @@ font_data = ExtResource( 1 )
 size = 64
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 32
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=4]
 size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -49,27 +53,12 @@ text = "Create new account"
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 3.0
-margin_top = 72.0
-margin_right = 3.0
-margin_bottom = -720.0
+margin_left = 34.0
+margin_top = 70.0
+margin_right = 34.0
+margin_bottom = -722.0
 custom_fonts/font = SubResource( 1 )
 text = "login"
-align = 1
-valign = 1
-autowrap = true
-uppercase = true
-
-[node name="userName" type="Label" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 375.0
-margin_top = 431.0
-margin_right = -1228.0
-margin_bottom = -571.0
-custom_fonts/font = SubResource( 2 )
-text = "username"
 align = 1
 valign = 1
 autowrap = true
@@ -87,16 +76,30 @@ custom_fonts/font = SubResource( 4 )
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="password" type="Label" parent="."]
+[node name="username_unsuccessful" type="Label" parent="usernameInput"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 375.0
-margin_top = 599.0
-margin_right = -1228.0
-margin_bottom = -406.0
-custom_fonts/font = SubResource( 3 )
-text = "password"
+margin_left = 528.0
+margin_top = 23.0
+margin_right = 280.0
+margin_bottom = -23.0
+custom_colors/font_color = Color( 0.780392, 0.0156863, 0.0156863, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "username does not exist"
+align = 1
+valign = 1
+
+[node name="userName" type="Label" parent="usernameInput"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -368.0
+margin_top = -10.0
+margin_right = -542.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 2 )
+text = "username"
 align = 1
 valign = 1
 autowrap = true
@@ -113,6 +116,35 @@ margin_bottom = -406.0
 secret = true
 caret_blink = true
 caret_blink_speed = 0.5
+
+[node name="password_unsuccessful" type="Label" parent="passwordInput"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 527.0
+margin_top = 24.0
+margin_right = 279.0
+margin_bottom = -21.0
+custom_colors/font_color = Color( 0.780392, 0.0156863, 0.0156863, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "password is not correct"
+align = 1
+valign = 1
+
+[node name="password" type="Label" parent="passwordInput"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -402.0
+margin_top = 12.0
+margin_right = -515.0
+margin_bottom = -15.0
+custom_fonts/font = SubResource( 3 )
+text = "password"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
 
 [node name="loginSuccess" type="Label" parent="."]
 visible = false

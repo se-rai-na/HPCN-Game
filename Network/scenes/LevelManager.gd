@@ -111,10 +111,7 @@ func set_level_status():
 	#used to get the current level the player is on
 	var newest_level = false
 	for i in range(0, max_level-1 + 1):
-		print("level" + str(i+1))
-		
 		if level_data[str(i+1)]["time"] != 0:
-			print(str(level_data[str(i+1)]["time"]))
 			#appends bool for level completion to flags array
 			flags.append(true)
 		else:
@@ -137,11 +134,9 @@ func get_user_data():
 	var json_string = file.get_as_text()
 	file.close()
 	level_data = JSON.parse(json_string).result
-	print(level_data) # Print the contents of level_data
 	
 #adds level data of newly played levels to the level_data array -> connects from HUD via SignalBus
 func _on_player_value_added(score, timer, _level):
-	print("CALLED FOR LEVEL" + str(_level))
 	level_data[str(_level)]["time"] = timer
 	level_data[str(_level)]["score"] = score
 	check_highscore(score, timer, _level)
@@ -159,7 +154,6 @@ func save_dictionary_to_json():
 	
 
 func display():
-	print("Display in LevelSelection")
 	show_buttons()
 	set_crown()
 	set_username()
@@ -170,7 +164,6 @@ func set_checks():
 	#checks for each levels
 	for i in range (0, flags.size()):
 		if flags[i]:
-			print("flag", i+1, "is true")
 			#checkMark_nodes[i].show()
 			star1_nodes[i].show()
 			level_nodes[i].disabled = false
@@ -196,7 +189,6 @@ func get_highscore_data():
 	var json_string = file.get_as_text()
 	file.close()
 	highscore_data = JSON.parse(json_string).result
-	print(highscore_data)
 #checks if recent score is new highscore and adds it to the highscore 
 #if that is the case
 func check_highscore(score, timer, _level):
