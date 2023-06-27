@@ -94,6 +94,7 @@ func _on_button_pressed():
 func hide():
 	$login.hide()
 	$newAccount.hide()
+	$usernameInput.hide()
 	$usernameInput/userName.hide()
 	$passwordInput/password.hide()
 	$passwordInput.hide()

@@ -162,8 +162,9 @@ func display():
 
 func set_checks():
 	#checks for each levels
-	for i in range (0, flags.size()):
+	for i in range (0, 10):
 		if flags[i]:
+			print("flag" + str(i))
 			#checkMark_nodes[i].show()
 			star1_nodes[i].show()
 			level_nodes[i].disabled = false
@@ -326,8 +327,8 @@ func _on_lvl10_pressed():
 
 func _on_logout_pressed():
 	save_dictionary_to_json()
-	level_data = null
-	file_path = null
+	#level_data = null
+	#file_path = null
 	hide_buttons()
 	emit_signal("back_pressed")
 	
