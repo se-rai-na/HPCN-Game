@@ -56,6 +56,7 @@ func _on_Button_pressed():
 	#when everything is done, user is asked to log into account
 	SignalBus._load_log_in()
 	hide()
+	clearUserInput()
 	
 #Creates a new JSON file for the user to save users fame data
 func newUserFile():

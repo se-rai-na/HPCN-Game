@@ -164,7 +164,6 @@ func set_checks():
 	#checks for each levels
 	for i in range (0, 10):
 		if flags[i]:
-			print("flag" + str(i))
 			#checkMark_nodes[i].show()
 			star1_nodes[i].show()
 			level_nodes[i].disabled = false
