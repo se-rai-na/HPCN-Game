@@ -31,7 +31,7 @@ var level_data
 #file path for user data
 var file_path
 #file path for high score
-var filepath_highscore = "res://game_data/highscore_tracker.json"
+var filepath_highscore = "/Users/serainaburge/Desktop/game_data/highscore_tracker.json"
 #max scores for the levels
 var max_score = [25, 40, 50, 55, 60, 65, 70, 75, 80, 85]
 #dictionary for highscore data
@@ -92,7 +92,7 @@ func _ready():
 #or returns to the menu
 func _on_Login_logged_in(username):
 	user = username
-	file_path = "res://game_data/user_data/" + str(username) + ".json"
+	file_path = "/Users/serainaburge/Desktop/game_data/" + str(username) + ".json"
 	print("LOGGED IN LEVEL SELECTION " + str(username))
 	#if not debug:
 	#check status of all levels
@@ -139,6 +139,8 @@ func get_user_data():
 func _on_player_value_added(score, timer, _level):
 	level_data[str(_level)]["time"] = timer
 	level_data[str(_level)]["score"] = score
+	print(str(level_data[str(_level)]["score"]))
+	print(str(level_data[str(_level)]["time"]))
 	check_highscore(score, timer, _level)
 	#print(level_data)
 	save_dictionary_to_json()
@@ -148,10 +150,9 @@ func save_dictionary_to_json():
 	var file := File.new()
 	if file.open(file_path, File.WRITE) == OK:
 		file.store_string(json_data)
-		file.close()
 	else:
 		print("Failed to open file for writing:", file_path)
-	
+	file.close()	
 
 func display():
 	show_buttons()
@@ -183,8 +184,8 @@ func set_checks():
 
 func get_highscore_data():
 	var file = File.new()
-	if file.open("res://game_data/highscore_tracker.json", File.READ) != OK:
-		print("File " + str(file_path) + " could not be opened.")
+	if file.open(filepath_highscore, File.READ) != OK:
+		print("File " + str(filepath_highscore) + " could not be opened.")
 		return
 	var json_string = file.get_as_text()
 	file.close()
@@ -210,9 +211,9 @@ func save_new_highScore():
 	var file = File.new()
 	if file.open(filepath_highscore, File.WRITE) == OK:
 		file.store_string(json)
-		file.close()
 	else:
 		print("Failed to open file for writing:", file_path)
+	file.close()
 #checks if user has the global highscore in a level and 
 #makes the crown visible
 func set_crown():
@@ -227,7 +228,7 @@ func set_username():
 
 func set_star():
 	for i in range(0, max_level-1 + 1):
-		print("number " + str(i))
+		#print("number " + str(i))
 		var score = level_data[str(i+1)]["score"]
 		if score != 0:
 			var max_scores = max_score[i]

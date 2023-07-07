@@ -54,6 +54,10 @@ var shower1_req_units = 3
 var shower2_req_units = 4
 var shower3_req_units = 1
 
+#variables used to calculate score
+var minSecs = 90
+var maxScore = 85
+
 func _ready():
 	main_scene = get_node(get_parent().get_path())
 
@@ -120,6 +124,8 @@ func update_shower_spriites():
 		$Showers/Shower3/Happy.show()
 		$Showers/Shower3/Sad.hide()
 	if shower1_req_units == units_sent_1 + units_sent_3 and shower2_req_units == units_sent_8 + units_sent_9 and shower3_req_units <= units_sent_2 + units_sent_5:
+		$HUD.level = 10
+		$HUD.scoreDisplay(maxScore, minSecs)		
 		$Return.disabled = false
 		$Message.text = "Level complete!"
 		$Return.show() 
