@@ -31,7 +31,7 @@ var level_data
 #file path for user data
 var file_path
 #file path for high score
-var filepath_highscore = "res://game_data/game_data/highscore_tracker.json"
+var filepath_highscore = "res://game_data/highscore_tracker.json"
 #max scores for the levels
 var max_score = [25, 40, 50, 55, 60, 65, 70, 75, 80, 85]
 #dictionary for highscore data
@@ -92,7 +92,7 @@ func _ready():
 #or returns to the menu
 func _on_Login_logged_in(username):
 	user = username
-	file_path = "res://game_data/" + str(username) + ".json"
+	file_path = "res://game_data/user_data/" + str(username) + ".json"
 	print("LOGGED IN LEVEL SELECTION " + str(username))
 	#if not debug:
 	#check status of all levels
