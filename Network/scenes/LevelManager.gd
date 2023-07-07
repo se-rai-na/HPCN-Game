@@ -75,7 +75,7 @@ func _ready():
 		star2_nodes.append(get_node("lvl" + str(i) + "/Star1/Star2"))
 		star3_nodes.append(get_node("lvl" + str(i) + "/Star1/Star3"))
 	#Connects to the HUD script in order to get the score values using a glibal signal
-	SignalBus.connect("level_finished", self, "_on_player_value_added", [], CONNECT_ONESHOT)
+	SignalBus.connect("level_finished", self, "_on_player_value_added", [])
 
 	hide_buttons()
 
