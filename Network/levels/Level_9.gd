@@ -343,9 +343,10 @@ func control_3():
 
 func control_4():
 	#starts water animation
-	if $Water/"4".get_cell(15, 6) != $Water/"4".tile_set.find_tile_by_name("full_cap_2.tres 0"):
+	if $Water/"4".get_cell(15, 5) != $Water/"4".tile_set.find_tile_by_name("full_cap_2.tres 0"):
 		disable_buttons()
 		$Water/"4".set_cell(x_4, y_4, $Water/"4".tile_set.find_tile_by_name("full_cap_2.tres 0"))
+		$Water/"4".set_cell(x_4 + 1, y_4, $Water/"4".tile_set.find_tile_by_name("split.tres 1"))
 		y_4 = y_4 - 1
 		change_4 = true
 	else:

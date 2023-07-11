@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://levels/Level_3.gd" type="Script" id=1]
 [ext_resource path="res://images/watersource.png" type="Texture" id=2]
@@ -27,6 +27,8 @@
 [ext_resource path="res://images/happy_icon.png" type="Texture" id=25]
 [ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=26]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=27]
+[ext_resource path="res://images/pipes/red_pipe_bg1.png" type="Texture" id=28]
+[ext_resource path="res://images/pipes/pipe_bg.png" type="Texture" id=29]
 
 [sub_resource type="DynamicFont" id=6]
 size = 40
@@ -189,6 +191,36 @@ font_data = ExtResource( 16 )
 2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
+
+[sub_resource type="TileSet" id=17]
+0/name = "end_left_cap_1.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "end_right_cap_1.png 1"
+1/texture = ExtResource( 6 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
 
 [sub_resource type="TileSet" id=2]
 0/name = "end_bottom_cap_2.png 0"
@@ -406,6 +438,66 @@ font_data = ExtResource( 16 )
 4/shapes = [  ]
 4/z_index = 0
 
+[sub_resource type="TileSet" id=18]
+0/name = "red_pipe_bg1.png 0"
+0/texture = ExtResource( 28 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 96 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "pipe_bg.png 1"
+1/texture = ExtResource( 29 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=19]
+0/name = "pipe_bg.png 0"
+0/texture = ExtResource( 29 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "red_pipe_bg1.png 1"
+1/texture = ExtResource( 28 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 96 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
 [sub_resource type="DynamicFont" id=5]
 size = 15
 font_data = ExtResource( 16 )
@@ -456,21 +548,25 @@ text = "RETURN TO HOME"
 
 [node name="1" type="TileMap" parent="Water"]
 position = Vector2( -40, 120 )
+z_index = 2
 tile_set = SubResource( 13 )
 format = 1
 
 [node name="2" type="TileMap" parent="Water"]
 position = Vector2( -40, 96 )
+z_index = 2
 tile_set = SubResource( 10 )
 format = 1
 
 [node name="3" type="TileMap" parent="Water"]
 position = Vector2( -48, 136 )
+z_index = 10
 tile_set = SubResource( 9 )
 format = 1
 
 [node name="4" type="TileMap" parent="Water"]
 position = Vector2( -40, 96 )
+z_index = 10
 tile_set = SubResource( 11 )
 format = 1
 
@@ -523,24 +619,35 @@ align = 1
 
 [node name="1" type="TileMap" parent="Pipes"]
 position = Vector2( -40, 96 )
+z_index = 1
 tile_set = SubResource( 1 )
 format = 1
-tile_data = PoolIntArray( 655365, 0, 0, 655366, 2, 0, 655367, 2, 0, 655368, 2, 0, 655369, 2, 0, 655370, 2, 0, 655371, 2, 0, 655372, 2, 0, 655373, 2, 0, 655374, 2, 0, 655375, 2, 0, 655376, 2, 0, 655377, 2, 0, 655378, 2, 0, 655379, 2, 0, 655380, 2, 0, 655381, 2, 0, 655382, 2, 0, 655383, 2, 0, 655384, 1, 0 )
+tile_data = PoolIntArray( 655366, 2, 0, 655367, 2, 0, 655368, 2, 0, 655369, 2, 0, 655370, 2, 0, 655371, 2, 0, 655372, 2, 0, 655373, 2, 0, 655374, 2, 0, 655375, 2, 0, 655376, 2, 0, 655377, 2, 0, 655378, 2, 0, 655379, 2, 0, 655380, 2, 0, 655381, 2, 0, 655382, 2, 0, 655383, 2, 0 )
+
+[node name="ends" type="TileMap" parent="Pipes/1"]
+position = Vector2( 0, -64 )
+scale = Vector2( 1, 0.8 )
+tile_set = SubResource( 17 )
+format = 1
+tile_data = PoolIntArray( 917509, 0, 0, 917528, 1, 0 )
 
 [node name="2" type="TileMap" parent="Pipes"]
 position = Vector2( -40, 96 )
+z_index = 1
 tile_set = SubResource( 2 )
 format = 1
 tile_data = PoolIntArray( 327682, 2, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327689, 3, 0, 327690, 3, 0, 327691, 3, 0, 327692, 4, 0, 524290, 1, 0, 589826, 0, 0 )
 
 [node name="3" type="TileMap" parent="Pipes"]
 position = Vector2( -48, 112 )
+z_index = 1
 tile_set = SubResource( 12 )
 format = 1
 tile_data = PoolIntArray( 327697, 1, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 4, 0, 458776, 5, 0, 524312, 5, 0, 589848, 6, 0 )
 
 [node name="4" type="TileMap" parent="Pipes"]
 position = Vector2( -40, 96 )
+z_index = 1
 tile_set = SubResource( 3 )
 format = 1
 tile_data = PoolIntArray( 65550, 2, 0, 65553, 4, 0, 65554, 4, 0, 65555, 4, 0, 65556, 4, 0, 65557, 4, 0, 65558, 4, 0, 65559, 4, 0, 65560, 4, 0, 65561, 4, 0, 65562, 4, 0, 65563, 3, 0, 262158, 0, 0, 262171, 1, 0, 327707, 1, 0, 393243, 1, 0, 458779, 1, 0, 524315, 1, 0, 589851, 0, 0 )
@@ -586,6 +693,39 @@ margin_left = 840.0
 margin_top = 128.0
 margin_right = 976.0
 margin_bottom = 512.0
+
+[node name="bg" type="TileMap" parent="Pipes"]
+position = Vector2( 0, 32 )
+tile_set = SubResource( 18 )
+format = 1
+tile_data = PoolIntArray( 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 196634, 1, 0, 196635, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0 )
+
+[node name="bg2" type="TileMap" parent="Pipes/bg"]
+position = Vector2( 1, -16 )
+tile_set = SubResource( 18 )
+format = 1
+tile_data = PoolIntArray( 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0 )
+
+[node name="bg_size1" type="TileMap" parent="Pipes/bg"]
+position = Vector2( 24, -24 )
+tile_set = SubResource( 18 )
+format = 1
+tile_data = PoolIntArray( 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786448, 1, 0, 786449, 1, 0, 786450, 1, 0, 786451, 1, 0, 786452, 1, 0, 786453, 1, 0, 786454, 1, 0 )
+
+[node name="bg_vertical" type="TileMap" parent="Pipes/bg"]
+position = Vector2( 24, 0 )
+rotation = 1.5708
+tile_set = SubResource( 18 )
+format = 1
+tile_data = PoolIntArray( -1835005, 1, 0, -1835004, 1, 0, -1835003, 1, 0, -1835002, 1, 0, -1835001, 1, 0, -1835000, 1, 0, -1834999, 1, 0, -1638393, 1, 0, -1638392, 1, 0, -1638391, 1, 0, -983036, 1, 0, -196600, 1, 0, -196599, 1, 0 )
+
+[node name="bg_half_size" type="TileMap" parent="Pipes/bg"]
+position = Vector2( 24, -8 )
+rotation = 1.5708
+scale = Vector2( 0.5, 1 )
+tile_set = SubResource( 19 )
+format = 1
+tile_data = PoolIntArray( -1638386, 0, 0, -1638380, 0, 0 )
 
 [node name="Cost" type="Node" parent="."]
 

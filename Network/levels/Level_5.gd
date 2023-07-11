@@ -210,6 +210,7 @@ func control_3():
 		if $Water/"3".get_cell(7, 10) == -1:
 			disable_buttons()
 			$Water/"3".set_cell(x_3, 10, $Water/"3".tile_set.find_tile_by_name("full_cap_2.tres 0"))
+			$Water/"3".set_cell(x_3, 9, $Water/"3".tile_set.find_tile_by_name("cap_1.tres 1"))			
 			x_3 = x_3 - 1
 			change_3 = true
 		else:
