@@ -105,6 +105,8 @@ func control_1():
 		elif $Water/"1".get_cell(24, 13) == -1:
 			disable_buttons()
 			$Water/"1".set_cell(x_1, 13, $Water/"1".tile_set.find_tile_by_name("full_cap_2.tres 0"))
+			$Water/"1"/"1a".set_cell(x_1, 12, $Water/"1".tile_set.find_tile_by_name("full_cap_2.tres 0"))
+			
 			x_1 = x_1 + 1
 		elif $Water/"1".get_cell(24, 11) == -1:
 			disable_buttons()

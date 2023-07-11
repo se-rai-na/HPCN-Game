@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://levels/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=2]
@@ -19,8 +19,10 @@
 [ext_resource path="res://images/water_animation/full_2/full_cap_2.tres" type="Texture" id=17]
 [ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=18]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=19]
+[ext_resource path="res://images/pipes/red_pipe_bg1.png" type="Texture" id=20]
 [ext_resource path="res://images/water_animation/shower_low/shower_low.tres" type="Texture" id=21]
 [ext_resource path="res://images/water_animation/shower_high/shower_high.tres" type="Texture" id=22]
+[ext_resource path="res://images/pipes/pipe_bg.png" type="Texture" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -220,6 +222,66 @@ font_data = ExtResource( 2 )
 2/shapes = [  ]
 2/z_index = 0
 
+[sub_resource type="TileSet" id=15]
+0/name = "end_left_cap_1.png 0"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "end_right_cap_1.png 1"
+1/texture = ExtResource( 10 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=16]
+0/name = "red_pipe_bg1.png 0"
+0/texture = ExtResource( 20 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 96 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "pipe_bg.png 1"
+1/texture = ExtResource( 23 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
 [sub_resource type="DynamicFont" id=7]
 size = 15
 font_data = ExtResource( 2 )
@@ -266,11 +328,13 @@ autowrap = true
 [node name="Water" type="Node" parent="."]
 
 [node name="1" type="TileMap" parent="Water"]
+z_index = 1
 tile_set = SubResource( 6 )
 format = 1
 
 [node name="2" type="TileMap" parent="Water"]
 position = Vector2( 0, 68 )
+z_index = 1
 tile_set = SubResource( 8 )
 format = 1
 
@@ -325,9 +389,17 @@ tile_data = PoolIntArray( 327682, 2, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0
 
 [node name="2" type="TileMap" parent="Pipes"]
 position = Vector2( 0, 48 )
+z_index = 1
 tile_set = SubResource( 13 )
 format = 1
-tile_data = PoolIntArray( 589829, 0, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 2, 0 )
+tile_data = PoolIntArray( 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0 )
+
+[node name="ends" type="TileMap" parent="Pipes/2"]
+position = Vector2( 0, -78 )
+scale = Vector2( 1, 0.8 )
+tile_set = SubResource( 15 )
+format = 1
+tile_data = PoolIntArray( 851974, 1, 0, 851992, 1, 0 )
 
 [node name="P1_Control" type="Control" parent="Pipes"]
 margin_left = 160.0
@@ -340,6 +412,17 @@ margin_left = 360.0
 margin_top = 576.0
 margin_right = 1560.0
 margin_bottom = 696.0
+
+[node name="bg" type="TileMap" parent="Pipes"]
+tile_set = SubResource( 16 )
+format = 1
+tile_data = PoolIntArray( 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 393239, 1, 0, 393240, 1, 0, 393241, 1, 0, 393242, 1, 0, 458755, 1, 0, 458778, 1, 0 )
+
+[node name="bg" type="TileMap" parent="Pipes/bg"]
+position = Vector2( 0, -40 )
+tile_set = SubResource( 16 )
+format = 1
+tile_data = PoolIntArray( 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720916, 1, 0, 720917, 1, 0, 720918, 1, 0, 720919, 1, 0 )
 
 [node name="Cost" type="Node" parent="."]
 

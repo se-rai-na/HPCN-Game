@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://images/pipes/curved_3_cap_4.png" type="Texture" id=1]
 [ext_resource path="res://images/connector.png" type="Texture" id=2]
@@ -32,6 +32,9 @@
 [ext_resource path="res://images/pipes/end_bottom_cap_2.png" type="Texture" id=30]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=31]
 [ext_resource path="res://images/soap_animation/soap_full/soap_full.tres" type="Texture" id=32]
+[ext_resource path="res://images/pipes/3_down_cap_4.png" type="Texture" id=33]
+[ext_resource path="res://images/pipes/red_pipe_bg1.png" type="Texture" id=34]
+[ext_resource path="res://images/pipes/pipe_bg.png" type="Texture" id=35]
 
 [sub_resource type="DynamicFont" id=5]
 size = 40
@@ -56,6 +59,20 @@ font_data = ExtResource( 20 )
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+1/name = "full_cap_2.tres 1"
+1/texture = ExtResource( 21 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 32, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
 
 [sub_resource type="TileSet" id=14]
 0/name = "cap_2.tres 0"
@@ -251,6 +268,202 @@ font_data = ExtResource( 20 )
 8/shapes = [  ]
 8/z_index = 0
 
+[sub_resource type="TileSet" id=18]
+0/name = "upright_cap_4.png 0"
+0/texture = ExtResource( 25 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "3_down_cap_4.png 1"
+1/texture = ExtResource( 33 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 96, 96, 96, 96 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=19]
+0/name = "upright_cap_4.png 0"
+0/texture = ExtResource( 25 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 128, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=20]
+0/name = "end_top_cap_4.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "end_bottom_cap_4.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 192, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=21]
+0/name = "curved_3_cap_4.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "curved_3_cap_4.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 96, 96, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=22]
+0/name = "straight_cap_4.png 0"
+0/texture = ExtResource( 27 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 128, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "curved_2_cap_4.png 1"
+1/texture = ExtResource( 14 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 128, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "curved_2_cap_4.png 2"
+2/texture = ExtResource( 14 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 96, 32, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="TileSet" id=23]
+0/name = "straight_cap_4.png 0"
+0/texture = ExtResource( 27 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=24]
+0/name = "end_left_cap_4.png 0"
+0/texture = ExtResource( 17 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 192 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "end_right_cap_4.png 1"
+1/texture = ExtResource( 28 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 192 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
 [sub_resource type="TileSet" id=2]
 3/name = "end_left_cap_2.png 3"
 3/texture = ExtResource( 8 )
@@ -339,6 +552,36 @@ font_data = ExtResource( 20 )
 2/shapes = [  ]
 2/z_index = 0
 
+[sub_resource type="TileSet" id=17]
+0/name = "end_left_cap_1.png 0"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "end_right_cap_1.png 1"
+1/texture = ExtResource( 19 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
 [sub_resource type="TileSet" id=3]
 0/name = "end_bottom_cap_2.png 0"
 0/texture = ExtResource( 30 )
@@ -397,6 +640,66 @@ font_data = ExtResource( 20 )
 3/shapes = [  ]
 3/z_index = 0
 
+[sub_resource type="TileSet" id=25]
+0/name = "red_pipe_bg1.png 0"
+0/texture = ExtResource( 34 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 96 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "pipe_bg.png 1"
+1/texture = ExtResource( 35 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=26]
+0/name = "pipe_bg.png 0"
+0/texture = ExtResource( 35 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "red_pipe_bg1.png 1"
+1/texture = ExtResource( 34 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 96 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
 [sub_resource type="DynamicFont" id=7]
 size = 15
 font_data = ExtResource( 20 )
@@ -446,22 +749,32 @@ text = "RETURN TO HOME"
 [node name="Water" type="Node" parent="."]
 
 [node name="1" type="TileMap" parent="Water"]
-position = Vector2( 72, -72 )
+position = Vector2( 72, -66 )
+z_index = 2
+tile_set = SubResource( 13 )
+format = 1
+
+[node name="1a" type="TileMap" parent="Water/1"]
+position = Vector2( 0, 32 )
+z_index = 2
 tile_set = SubResource( 13 )
 format = 1
 
 [node name="2" type="TileMap" parent="Water"]
 position = Vector2( 72, -72 )
+z_index = 2
 tile_set = SubResource( 14 )
 format = 1
 
 [node name="3" type="TileMap" parent="Water"]
 position = Vector2( 120, -88 )
+z_index = 2
 tile_set = SubResource( 15 )
 format = 1
 
 [node name="4" type="TileMap" parent="Water"]
 position = Vector2( 72, -72 )
+z_index = 2
 tile_set = SubResource( 16 )
 format = 1
 
@@ -512,26 +825,92 @@ align = 1
 
 [node name="Pipes" type="Node" parent="."]
 
-[node name="P1" type="TileMap" parent="Pipes"]
+[node name="P1_old" type="TileMap" parent="Pipes"]
+visible = false
 position = Vector2( 72, -72 )
+z_index = 1
 tile_set = SubResource( 1 )
 format = 1
 tile_data = PoolIntArray( 655362, 1073741829, 0, 655383, 1073741829, 0, 720898, 1073741827, 0, 720919, 1073741827, 0, 786434, 1073741825, 0, 786437, 1073741828, 0, 786438, 1073741828, 0, 786439, 1073741828, 0, 786440, 1073741828, 0, 786441, 1073741828, 0, 786442, 1073741828, 0, 786443, 1073741828, 0, 786444, 1073741828, 0, 786445, 1073741828, 0, 786446, 1073741828, 0, 786447, 1073741828, 0, 786448, 1073741828, 0, 786449, 1073741828, 0, 786450, 1073741828, 0, 786451, 1073741828, 0, 786452, 1073741828, 0, 786453, 1073741828, 0, 786454, 1073741828, 0, 786455, 1073741832, 0 )
 
+[node name="P1" type="TileMap" parent="Pipes"]
+position = Vector2( 2, 0 )
+format = 1
+
+[node name="vertical" type="TileMap" parent="Pipes/P1"]
+tile_set = SubResource( 18 )
+format = 1
+tile_data = PoolIntArray( 589827, 0, 0, 589848, 0, 0, 655363, 0, 0, 655384, 0, 0, 720899, 0, 0, 786435, 0, 0 )
+
+[node name="6r" type="TileMap" parent="Pipes/P1/vertical"]
+position = Vector2( 32, 0 )
+tile_set = SubResource( 19 )
+format = 1
+tile_data = PoolIntArray( 589829, 0, 0, 589850, 0, 0, 655365, 0, 0, 655386, 0, 0, 720922, 0, 0, 786458, 0, 0 )
+
+[node name="6ends" type="TileMap" parent="Pipes/P1/vertical"]
+position = Vector2( 15, 8 )
+scale = Vector2( 1.25, 0.8 )
+z_index = 4
+tile_set = SubResource( 20 )
+format = 1
+tile_data = PoolIntArray( 720898, 1, 0, 720915, 1, 0 )
+
+[node name="6c" type="TileMap" parent="Pipes/P1/vertical"]
+position = Vector2( 64, 32 )
+tile_set = SubResource( 21 )
+format = 1
+tile_data = PoolIntArray( 655383, 0, 0, 786457, 1, 0 )
+
+[node name="6c2" type="TileMap" parent="Pipes/P1/vertical"]
+position = Vector2( 32, 32 )
+rotation = 1.5708
+tile_set = SubResource( 21 )
+format = 1
+tile_data = PoolIntArray( -393206, 0, 0, -262132, 1, 0 )
+
+[node name="horizontal" type="TileMap" parent="Pipes/P1"]
+tile_set = SubResource( 22 )
+format = 1
+tile_data = PoolIntArray( 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 851992, 0, 0, 851993, 0, 0 )
+
+[node name="8t" type="TileMap" parent="Pipes/P1/horizontal"]
+position = Vector2( 0, -32 )
+tile_set = SubResource( 23 )
+format = 1
+tile_data = PoolIntArray( 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0 )
+
+[node name="8ends" type="TileMap" parent="Pipes/P1/horizontal"]
+position = Vector2( 0, -44 )
+scale = Vector2( 0.8, 1.25 )
+tile_set = SubResource( 24 )
+format = 1
+
 [node name="P2" type="TileMap" parent="Pipes"]
 position = Vector2( 72, -72 )
+z_index = 1
 tile_set = SubResource( 2 )
 format = 1
 tile_data = PoolIntArray( 458757, 3, 0, 458758, 4, 0, 458759, 4, 0, 458760, 4, 0, 458761, 4, 0, 458762, 4, 0, 458763, 4, 0, 458764, 5, 0 )
 
 [node name="P3" type="TileMap" parent="Pipes"]
 position = Vector2( 56, -48 )
+z_index = 1
 tile_set = SubResource( 6 )
 format = 1
-tile_data = PoolIntArray( 458768, 0, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 2, 0 )
+tile_data = PoolIntArray( 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0 )
+
+[node name="ends" type="TileMap" parent="Pipes/P3"]
+position = Vector2( 0, -52 )
+scale = Vector2( 1, 0.8 )
+z_index = 1
+tile_set = SubResource( 17 )
+format = 1
+tile_data = PoolIntArray( 655376, 0, 0, 655383, 1, 0 )
 
 [node name="P4" type="TileMap" parent="Pipes"]
 position = Vector2( 72, -72 )
+z_index = 1
 tile_set = SubResource( 3 )
 format = 1
 tile_data = PoolIntArray( 196621, 2, 0, 196624, 3, 0, 196625, 3, 0, 196626, 3, 0, 196627, 3, 0, 196628, 3, 0, 196629, 3, 0, 196630, 3, 0, 196631, 536870914, 0, 393229, 0, 0, 393239, 0, 0 )
@@ -581,6 +960,37 @@ margin_left = 640.0
 margin_top = 120.0
 margin_right = 784.0
 margin_bottom = 192.0
+
+[node name="bg" type="TileMap" parent="Pipes"]
+position = Vector2( 6, -8 )
+tile_set = SubResource( 25 )
+format = 1
+tile_data = PoolIntArray( 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0 )
+
+[node name="bg" type="TileMap" parent="Pipes/bg"]
+rotation = 1.5708
+tile_set = SubResource( 25 )
+format = 1
+tile_data = PoolIntArray( -1703932, 1, 0, -1048572, 1, 0 )
+
+[node name="bg_red" type="TileMap" parent="Pipes/bg"]
+position = Vector2( 0, -24 )
+tile_set = SubResource( 25 )
+format = 1
+tile_data = PoolIntArray( 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786456, 0, 0 )
+
+[node name="bg2" type="TileMap" parent="Pipes/bg"]
+position = Vector2( 28, 8 )
+rotation = 1.5708
+tile_set = SubResource( 25 )
+format = 1
+tile_data = PoolIntArray( -1703927, 0, 0, -1703926, 0, 0, -1703925, 0, 0, -1703924, 0, 0, -327671, 0, 0, -327670, 0, 0, -327669, 0, 0, -327668, 0, 0 )
+
+[node name="bg_half_size" type="TileMap" parent="Pipes/bg"]
+scale = Vector2( 0.5, 1 )
+tile_set = SubResource( 26 )
+format = 1
+tile_data = PoolIntArray( 458787, 0, 0 )
 
 [node name="Cost" type="Node" parent="."]
 

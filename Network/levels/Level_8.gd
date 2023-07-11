@@ -405,14 +405,20 @@ func control_5():
 	if initial_5 or cost_1 > cost_3 or cost_2 > cost_4:
 		if $Water/"5".get_cell(15, 7) != $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"):
 			disable_buttons()
+			$Water/"5".set_cell(15, 8, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"))
+			$Water/"5".set_cell(16, 8, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"))
+			$Water/"5".set_cell(16, 7, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"))
 			$Water/"5".set_cell(15, 7, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"))
-		elif $Water/"5".get_cell(16, 6) != $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"):
+			
+		elif $Water/"5".get_cell(17, 6) != $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"):
 			disable_buttons()
 			$Water/"5".set_cell(x_5, 6, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"))
+			$Water/"5".set_cell(x_5, 7, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"))
 			x_5 = x_5 + 1
 		elif $Water/"5".get_cell(15, 5) != $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"):
 			disable_buttons()
 			$Water/"5".set_cell(15, 5, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"))
+			$Water/"5".set_cell(16, 5, $Water/"5".tile_set.find_tile_by_name("full_cap_2.tres 0"))
 			change_5 = true
 		else:
 			initial_5 = false
