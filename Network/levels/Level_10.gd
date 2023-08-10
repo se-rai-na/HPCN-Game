@@ -3,22 +3,22 @@ extends Node
 #timer controls the speed that water tiles populate
 var _timer = null
 
-var cost_1 = 4
-var cost_2 = 1
-var cost_3 = 3
-var cost_4 = 2
-var cost_5 = 1
-var cost_6 = 4
+var cost_1 = 1
+var cost_2 = 3
+var cost_3 = 1
+var cost_4 = 6
+var cost_5 = 2
+var cost_6 = 2
 var cost_7 = 1
-var cost_8 = 4
-var cost_9 = 3
+var cost_8 = 2
+var cost_9 = 1
 
 var sent_1 = false
-var sent_2 = true
+var sent_2 = false
 var sent_3 = false
-var sent_4 = true
+var sent_4 = false
 var sent_5 = true
-var sent_6 = false
+var sent_6 = true
 var sent_7 = true
 var sent_8 = false
 var sent_9 = true
@@ -30,29 +30,29 @@ var main_scene
 var sources_used = 0
 var route_costs = [0,0,0,0,0,0]
 var route_is_split = [false,  false, false, false, false, false]
-var active_routes = [1, 4, 5]
+var active_routes = [2,3,4,5]
 var left_split = false #7
 var top_split = false #8
 var bottom_split = false #9
 
 var x_3 = 11
-var x_4 = 5
+var x_4 = 11
 var x_5 = 5
 var x_8 = 18
 var x_9 = 25
-var y_9 = 5
+var y_9 = -6
 
 var units_sent_1 = 0
-var units_sent_2 = 2
-var units_sent_3 = 0
+var units_sent_2 = 0
+var units_sent_3 = 2
 var units_sent_5 = 1
-var units_sent_8 = 0
+var units_sent_8 = 2
 var units_sent_9 = 1
 
 
-var shower1_req_units = 3
+var shower1_req_units = 1
 var shower2_req_units = 4
-var shower3_req_units = 1
+var shower3_req_units = 3
 
 #variables used to calculate score
 var minSecs = 90
@@ -66,19 +66,16 @@ func _ready():
 	_timer = Timer.new()
 	add_child(_timer)
 	_timer.connect("timeout", self, "update_route_costs")	
-	_timer.connect("timeout", self, "control_1")
-	_timer.connect("timeout", self, "control_2")
-	_timer.connect("timeout", self, "control_3")	
-	_timer.connect("timeout", self, "control_4")
-	_timer.connect("timeout", self, "control_5")	
-	_timer.connect("timeout", self, "control_6")
-	_timer.connect("timeout", self, "control_7")			
-	_timer.connect("timeout", self, "control_8")
-	_timer.connect("timeout", self, "control_9")	
+	_timer.connect("timeout", self, "control_r0")
+	_timer.connect("timeout", self, "control_r1")
+	_timer.connect("timeout", self, "control_r2")
+	_timer.connect("timeout", self, "control_r3")	
+	_timer.connect("timeout", self, "control_r4")
+	_timer.connect("timeout", self, "control_r5")	
 		
 		
 		
-	_timer.set_wait_time(0.12)  
+	_timer.set_wait_time(0.1)  
 	_timer.start()
 
 	self.connect("change_route", self, "on_route_change")
@@ -90,9 +87,9 @@ func _process(delta):
 	$Tooltips/P5_Panel.rect_global_position = get_viewport().get_mouse_position()
 	$Tooltips/P6_Panel.rect_global_position = get_viewport().get_mouse_position()
 	$Tooltips/P7_Panel.rect_global_position = get_viewport().get_mouse_position()
-	$Showers/Shower1/Score.text = str(units_sent_1 + units_sent_3) + "/3"
+	$Showers/Shower1/Score.text = str(units_sent_1 + units_sent_3) + "/1"
 	$Showers/Shower2/Score.text = str(units_sent_8 + units_sent_9) + "/4"
-	$Showers/Shower3/Score.text = str(units_sent_2 + units_sent_5) + "/1"
+	$Showers/Shower3/Score.text = str(units_sent_2 + units_sent_5) + "/3"
 	$Cost/"1_cost".text = "Cost: " + str(cost_1)
 	$Cost/"2_cost".text = "Cost: " + str(cost_2)
 	$Cost/"3_cost".text = "Cost: " + str(cost_3)
@@ -124,15 +121,15 @@ func update_shower_spriites():
 		$Showers/Shower3/Happy.show()
 		$Showers/Shower3/Sad.hide()
 	if shower1_req_units == units_sent_1 + units_sent_3 and shower2_req_units == units_sent_8 + units_sent_9 and shower3_req_units <= units_sent_2 + units_sent_5:
-		$HUD.level = 10
-		$HUD.scoreDisplay(maxScore, minSecs)		
+		#Commented out as was causing game to crash
+		#$HUD.level = 10
+		#$HUD.scoreDisplay(maxScore, minSecs)		
 		$Return.disabled = false
 		$Message.text = "Level complete!"
 		$Return.show() 
 
 func update_route_costs():
 	print(active_routes)
-	print(route_is_split)
 	# left -> up
 	route_costs[0] = cost_4 + cost_1
 	
@@ -152,6 +149,10 @@ func update_route_costs():
 	route_costs[5] = cost_7 + cost_9
 
 func on_route_change(new_route):
+	if len(active_routes) >= 4:
+		print("returning")
+		print("returning")
+		return
 	print("in route change signal")
 	print("new route: ")
 	print(new_route)
@@ -161,35 +162,210 @@ func on_route_change(new_route):
 		$Water/"6".set_cell(14, 4, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
 		$Water/"6".set_cell(14, 5, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
 		sent_6 = true
-	elif new_route in [0,1]:
-		$Water/"4".set_cell(11, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))		
-		$Water/"4".set_cell(10, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
-		$Water/"4".set_cell(9, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
-		$Water/"4".set_cell(8, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
-		$Water/"4".set_cell(7, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))		
-		$Water/"4".set_cell(6, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
-		$Water/"4".set_cell(5, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
-		$Water/"4".set_cell(4, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))		
-		sent_4 = true
-		
 	active_routes.append(new_route)
+func control_r0():
+	if 0 in active_routes and $Water/"4".get_cell(4,7) == -1:
+		$Water/"4".set_cell(x_4, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
+		x_4 -= 1
+			
+	elif 0 in active_routes:
+		$Water/"1".set_cell(1, 5, $Water/"1".tile_set.find_tile_by_name("split.tres 4"))
+		$Water/"1".set_cell(1, 4, $Water/"1".tile_set.find_tile_by_name("split.tres 4"))
+		units_sent_1 = 1
+		x_4 = 4
+		for r in [1,2,3,4,5]:
+			if route_costs[0] > route_costs[r] and not r in active_routes:
+				if not 1 in active_routes and r != 1:
+					$Water/"4".set_cell(4, 7, -1)
+					$Water/"4".set_cell(5, 7, -1)
+					$Water/"4".set_cell(6, 7, -1)
+					$Water/"4".set_cell(7, 7, -1)
+					$Water/"4".set_cell(8, 7, -1)
+					$Water/"4".set_cell(9, 7, -1)
+					$Water/"4".set_cell(10, 7, -1)
+					$Water/"4".set_cell(11, 7, -1)
+					sent_4 = false
+					x_4 = 11
+				$Water/"1".set_cell(1, 4, -1)
+				$Water/"1".set_cell(1, 5, -1)
+				units_sent_1 = 0			
+				sent_1 = false
+				active_routes.erase(0)
+				emit_signal("change_route", r)
+	else:
+		units_sent_1 = 0
+				
+func control_r1():
+	if 1 in active_routes and $Water/"4".get_cell(4,7) == -1:
+		$Water/"4".set_cell(x_4, 7, $Water/"4".tile_set.find_tile_by_name("cap_2.tres 0"))
+		x_4 -= 1
+	elif 1 in active_routes:
+		x_4 = 4
+		$Water/"2".set_cell(1, 10, ($Water/"2".tile_set.find_tile_by_name("full_cap_2.tres 1") if  not 0 in active_routes else $Water/"2".tile_set.find_tile_by_name("split.tres 4")))
+		$Water/"2".set_cell(1, 11, ($Water/"2".tile_set.find_tile_by_name("full_cap_2.tres 1") if  not 0 in active_routes else $Water/"2".tile_set.find_tile_by_name("split.tres 4")))
+		units_sent_2 = 1 if 0 in active_routes else 2
+		for r in [0,2,3,4,5]:
+			if route_costs[1] > route_costs[r] and not r in active_routes:
+				if not 0 in active_routes and r != 0:
+					$Water/"4".set_cell(4, 7, -1)					
+					$Water/"4".set_cell(5, 7, -1)
+					$Water/"4".set_cell(6, 7, -1)
+					$Water/"4".set_cell(7, 7, -1)
+					$Water/"4".set_cell(8, 7, -1)
+					$Water/"4".set_cell(9, 7, -1)
+					$Water/"4".set_cell(10, 7, -1)
+					$Water/"4".set_cell(11, 7, -1)
+					sent_4 = false
+					x_4 = 11
+				$Water/"2".set_cell(1, 10, -1)
+				$Water/"2".set_cell(1, 11, -1)
+				units_sent_2 = 0
+				sent_2 = false
+				active_routes.erase(1)
+				emit_signal("change_route", r)
+	else:
+		units_sent_2 = 0
+func control_r2():
+	# up -> left
+	#if route needs to be filled
+	if 2 in active_routes and $Water/"3".get_cell(5,2) == -1:
+		if not sent_6:
+			$Water/"6".set_cell(15, 4, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"6".set_cell(15, 5, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"6".set_cell(14, 4, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"6".set_cell(14, 5, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			
+		$Water/"3".set_cell(x_3, 2, $Water/"3".tile_set.find_tile_by_name("cap_2.tres 0"))
+		x_3 -= 1
+	elif 2 in active_routes:
+		units_sent_3 = 2
+		for r in [0,1,3,4,5]:
+			if route_costs[2] > route_costs[r] and not r in active_routes:
+				if not 3 in active_routes and r != 3:
+					$Water/"6".set_cell(15, 4, -1)
+					$Water/"6".set_cell(15, 5, -1)
+					$Water/"6".set_cell(14, 4, -1)
+					$Water/"6".set_cell(14, 5, -1)
+					
+					sent_6 = false
+				for i in range(5, 12):
+					$Water/"3".set_cell(i, 2, -1)
+				units_sent_3 = 0			
+				sent_2 = false
+				active_routes.erase(2)
+				emit_signal("change_route", r)
+	else:
+		units_sent_3 = 0
+func control_r3():
+	# up -> right
+	#if route needs to be filled
+	if 3 in active_routes and $Water/"8".get_cell(23,2) == -1:
+		if not sent_6:
+			$Water/"6".set_cell(15, 4, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"6".set_cell(15, 5, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"6".set_cell(14, 4, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"6".set_cell(14, 5, $Water/"6".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			sent_6 = true
+		if 2 in active_routes:
+			$Water/"8".set_cell(x_8, 2, $Water/"8".tile_set.find_tile_by_name("cap_2.tres 0"))
+		else:
+			$Water/"8".set_cell(x_8, 2, $Water/"8".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"8".set_cell(x_8, 1, $Water/"8".tile_set.find_tile_by_name("cap_1.tres 2"))
+		x_8 += 1
+	elif 3 in active_routes:
+		units_sent_8 = 2 if 2 in active_routes else 4
+		for r in [0,1,2,4,5]:
+			if route_costs[3] > route_costs[r] and not r in active_routes:
+				if not 2 in active_routes and r != 2:
+					$Water/"6".set_cell(15, 4, -1)
+					$Water/"6".set_cell(15, 5, -1)
+					$Water/"6".set_cell(14, 4, -1)
+					$Water/"6".set_cell(14, 5, -1)
+					sent_6 = false
+				for i in range(18, 24):
+					$Water/"8".set_cell(i, 2, -1)
+					$Water/"8".set_cell(i, 1, -1)					
+				units_sent_8 = 0
+				x_8 = 18
+				active_routes.erase(3)
+				emit_signal("change_route", r)
+	else:
+		units_sent_8 = 0
+func control_r4():
+	# down -> left
+	#if route needs to be filled
+	if 4 in active_routes and $Water/"5".get_cell(5,13) == -1:
+		if not sent_7:
+			$Water/"7".set_cell(14, 10, $Water/"7".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"7".set_cell(14, 11, $Water/"7".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			
+		$Water/"5".set_cell(x_5, 13, $Water/"5".tile_set.find_tile_by_name("cap_2.tres 0"))
+		x_5 -= 1
+	elif 4 in active_routes:
+		units_sent_5 = 1 if 5 in active_routes else 2
+		for r in [0,1,2,3,5]:
+			if route_costs[4] > route_costs[r] and not r in active_routes:
+				if not 5 in active_routes and r != 5:
+					$Water/"7".set_cell(14, 10, -1)
+					$Water/"7".set_cell(14, 11, -1)
+					sent_7 = false
+				for i in range(5, 12):
+					$Water/"5".set_cell(i, 13, -1)
+				x_5 = 11
+				active_routes.erase(4)
+				units_sent_5 = 0
+				emit_signal("change_route", r)
+	else:
+		units_sent_5 = 0
+func control_r5():
+	# down -> right
+	#if route needs to be filled
+	print(y_9)
+	if 5 in active_routes and $Water/"9".get_cell(25,13) == -1:
+		if not sent_7:
+			$Water/"7".set_cell(14, 10, $Water/"7".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			$Water/"7".set_cell(14, 11, $Water/"7".tile_set.find_tile_by_name("full_cap_2.tres 1"))
+			
+		$Water/"9".set_cell(x_9, 13, ($Water/"9".tile_set.find_tile_by_name("cap_1.tres 2") if 4 in active_routes else $Water/"9".tile_set.find_tile_by_name("cap_2.tres 0")))
+		x_9 += 1
+	elif 5 in active_routes and $Water/"9/r".get_cell(-6,25) == -1:
+		$Water/"9/r".set_cell(y_9, 25, ($Water/"9/r".tile_set.find_tile_by_name("cap_1.tres 0") if 4 in active_routes else $Water/"9/r".tile_set.find_tile_by_name("cap_2.tres 1")))
+		y_9 += 1
+	elif 5 in active_routes:
+		units_sent_9 = 1 if 4 in active_routes else 2
+		for r in [0,1,2,3,4]:
+			if route_costs[5] > route_costs[r] and not r in active_routes:
+				if not 4 in active_routes and r != 4:
+					$Water/"7".set_cell(14, 10, -1)
+					$Water/"7".set_cell(14, 11, -1)
+					sent_7 = false
+				for i in range(17, 26):
+					$Water/"9".set_cell(i, 13, -1)
+				for i in range(-14, -5):
+					$Water/"9/r".set_cell(i, 25, -1)
+				x_9 = 17
+				y_9 = -14
+				units_sent_9 = 0
+				active_routes.erase(5)
+				emit_signal("change_route", r)
+	else:
+		units_sent_9 = 0
 func control_1():
-	if not 0 in active_routes and not route_is_split[0]:
+	if not 0 in active_routes:
 		$Water/"1".set_cell(1, 5, -1)
 		$Water/"1".set_cell(1, 4, -1)
 		sent_1 = false
 		units_sent_1 = 0
-	if cost_1 != cost_2:
-		route_is_split[0] = false
-	if 1 in active_routes and cost_1 == cost_2:
-		route_is_split[0] = true
-		units_sent_1 = 1
-		units_sent_2 = 1
+	elif 1 in active_routes:
 		$Water/"1".set_cell(1, 5, -1)
 		$Water/"1".set_cell(1, 4, -1)
 		$Water/"1".set_cell(1, 5, $Water/"1".tile_set.find_tile_by_name("split.tres 4"))
 		$Water/"1".set_cell(1, 4, $Water/"1".tile_set.find_tile_by_name("split.tres 4"))
-		sent_1 = false
+	elif 0 in active_routes and sent_4:
+		pass
+		$Water/"1".set_cell(1, 5, $Water/"1".tile_set.find_tile_by_name("split.tres 4"))
+		$Water/"1".set_cell(1, 4, $Water/"1".tile_set.find_tile_by_name("split.tres 4"))
+
 		
 	if 0 in active_routes:
 		units_sent_1 = (2 if (not route_is_split[1] and not 1 in active_routes) else 1)		
@@ -207,30 +383,7 @@ func control_1():
 			units_sent_1 = 2
 			units_sent_2 = 0
 			sent_1 = true
-	"""
-	if sent_4:
-		#Split water animation
-		if cost_1 == cost_2:
-			if not 0 in active_routes:
-				route_is_split[0] = true
-				units_sent_1 = 1
-				units_sent_2 = 1
-			if sent_1:
-				$Water/"1".set_cell(1, 5, -1)
-				$Water/"1".set_cell(1, 4, -1)
-			if $Water/"1".get_cell(1, 4) == -1:
-				$Water/"1".set_cell(1, 5, $Water/"1".tile_set.find_tile_by_name("split.tres 4"))
-				$Water/"1".set_cell(1, 4, $Water/"1".tile_set.find_tile_by_name("split.tres 4"))
-				sent_1 = false
-		elif cost_1 < cost_2:
-			$Water/"1".set_cell(1, 5, $Water/"1".tile_set.find_tile_by_name("full_cap_2.tres 1"))
-			$Water/"1".set_cell(1, 4, $Water/"1".tile_set.find_tile_by_name("full_cap_2.tres 1"))
-			if not 0 in active_routes:
-				active_routes.append(0)
-			units_sent_1 = 2
-			units_sent_2 = 0
-			sent_1 = true
-			"""
+
 				
 				
 
