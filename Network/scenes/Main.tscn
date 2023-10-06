@@ -28,7 +28,6 @@ texture = ExtResource( 4 )
 [node name="LevelSelectionScreen" parent="." instance=ExtResource( 3 )]
 
 [node name="PauseScreen" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [connection signal="level" from="." to="LevelSelectionScreen" method="display"]
 [connection signal="logged_in" from="Login" to="LevelSelectionScreen" method="_on_Login_logged_in"]

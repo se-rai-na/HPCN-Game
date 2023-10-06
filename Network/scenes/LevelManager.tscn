@@ -688,6 +688,12 @@ custom_fonts/font = SubResource( 23 )
 align = 1
 valign = 1
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="HTTPRequestHS" type="HTTPRequest" parent="."]
+
+[node name="HTTPRequest2" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="logout" to="." method="_on_logout_pressed"]
 [connection signal="pressed" from="lvl1" to="." method="_on_lvl1_pressed"]
 [connection signal="pressed" from="lvl2" to="." method="_on_lvl2_pressed"]
@@ -699,3 +705,5 @@ valign = 1
 [connection signal="pressed" from="lvl8" to="." method="_on_lvl8_pressed"]
 [connection signal="pressed" from="lvl9" to="." method="_on_lvl9_pressed"]
 [connection signal="pressed" from="lvl10" to="." method="_on_lvl10_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="request_completed" from="HTTPRequestHS" to="." method="_on_HTTPRequestHS_request_completed"]

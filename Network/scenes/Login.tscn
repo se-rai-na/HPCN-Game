@@ -167,5 +167,8 @@ margin_bottom = -234.0
 custom_fonts/font = SubResource( 6 )
 text = "Send"
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="newAccount" to="." method="_on_newAccount_pressed"]
 [connection signal="pressed" from="send" to="." method="_on_send_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

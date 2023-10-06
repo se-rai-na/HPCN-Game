@@ -10,7 +10,7 @@ extends Node
 #when true, allows playing any level without having to complete the previous one
 var debug = false
 #current user logged in
-var user
+var user: String
 #flags for respective level completion
 #unlocks the next level
 #Array that stores bool completion for each level
@@ -27,7 +27,7 @@ var star3_nodes = []
 #current level
 var level
 #dictionary that stores score and time for all the levels
-var level_data
+var level_data = {}
 #file path for user data
 var file_path
 #file path for high score
@@ -35,10 +35,14 @@ var filepath_highscore = "res://game_data/highscore_tracker.json"
 #max scores for the levels
 var max_score = [25, 40, 50, 55, 60, 65, 70, 75, 80, 85]
 #dictionary for highscore data
-var highscore_data
+var highscore_data = {}
 
 #there are 10 levels
 var max_level = 10
+onready var http = $HTTPRequest
+onready var highscore_http = $HTTPRequestHS
+
+var data_updated = false
 
 #returns to StartScreen node
 signal back_pressed
@@ -94,17 +98,20 @@ func _on_Login_logged_in(username):
 	user = username
 	file_path = "res://game_data/user_data/" + str(username) + ".json"
 	print("LOGGED IN LEVEL SELECTION " + str(username))
+	get_user_data()
 	#if not debug:
 	#check status of all levels
-	set_level_status()
+	
+	#Commented out to test api login
+	#set_level_status()
 	#display the level buttons
-	display()
+	
 		
 #flags each level depending on completed/ not completed
 func set_level_status():
 	#deserialize json file with user data into a dictionary 
 	#within a dictionary
-	get_user_data()
+	#get_user_data()
 	#check levels if the value for time is 0
 	#level has not been completed
 	var node_path
@@ -127,6 +134,8 @@ func set_level_status():
 
 #deserialized json file
 func get_user_data():
+	Firebase.get_user_level_data(user, http)
+	"""
 	var file = File.new()
 	if file.open(file_path, File.READ) != OK:
 		print("File " + str(file_path) + " could not be opened.")
@@ -134,6 +143,7 @@ func get_user_data():
 	var json_string = file.get_as_text()
 	file.close()
 	level_data = JSON.parse(json_string).result
+	"""
 	
 #adds level data of newly played levels to the level_data array -> connects from HUD via SignalBus
 func _on_player_value_added(score, timer, _level):
@@ -152,8 +162,7 @@ func save_dictionary_to_json():
 		file.store_string(json_data)
 	else:
 		print("Failed to open file for writing:", file_path)
-	file.close()	
-
+	file.close()
 func display():
 	show_buttons()
 	set_crown()
@@ -183,6 +192,7 @@ func set_checks():
 	#$highScore1.text = user + ": " + score_user
 
 func get_highscore_data():
+	"""
 	var file = File.new()
 	if file.open(filepath_highscore, File.READ) != OK:
 		print("File " + str(filepath_highscore) + " could not be opened.")
@@ -190,6 +200,8 @@ func get_highscore_data():
 	var json_string = file.get_as_text()
 	file.close()
 	highscore_data = JSON.parse(json_string).result
+	"""
+	Firebase.get_highscores(highscore_http)
 #checks if recent score is new highscore and adds it to the highscore 
 #if that is the case
 func check_highscore(score, timer, _level):
@@ -197,16 +209,18 @@ func check_highscore(score, timer, _level):
 		highscore_data[str(_level)]["user"] = user
 		highscore_data[str(_level)]["score"] = score
 		highscore_data[str(_level)]["time"] = timer
-		save_new_highScore()
+		Firebase.set_new_highscore(_level, user, timer, score, $HTTPRequest2)
 	elif highscore_data[str(_level)]["score"] == score:
 		if highscore_data[str(_level)]["time"] < timer:
 			highscore_data[str(_level)]["user"] = user
 			highscore_data[str(_level)]["score"] = score
 			highscore_data[str(_level)]["time"] = timer
-			save_new_highScore()
+			Firebase.set_new_highscore(_level, user, timer, score, $HTTPRequest2)
+
 		else:
 			return 
 func save_new_highScore():
+	
 	var json := JSON.print(highscore_data)
 	var file = File.new()
 	if file.open(filepath_highscore, File.WRITE) == OK:
@@ -332,3 +346,31 @@ func _on_logout_pressed():
 	hide_buttons()
 	emit_signal("back_pressed")
 	
+
+
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+	var json = JSON.parse(body.get_string_from_utf8()).result
+	var newest_level = false	
+	for i in range(1, max_level + 1):
+		level_data[str(i)] = json[i]
+		if json[i]["time"] != 0:
+			#appends bool for level completion to flags array
+			flags.append(true)
+		else:
+			if not newest_level:
+				#level has not been played yet but is the current level
+				newest_level = true
+				#set flag to disable button to true
+				flags.append(true)
+			else:
+				#level has not been played yet and is not the current level
+				flags.append(false)
+	display()	
+
+
+func _on_HTTPRequestHS_request_completed(result, response_code, headers, body):
+	var json = JSON.parse(body.get_string_from_utf8()).result
+	for i in range(1, max_level + 1):
+		highscore_data[str(i)] = json[i]
+	print(highscore_data)
+		

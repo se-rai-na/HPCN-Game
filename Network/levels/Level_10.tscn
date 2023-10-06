@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://levels/Level_10.gd" type="Script" id=1]
 [ext_resource path="res://images/pipes/end_left_cap_2.png" type="Texture" id=2]
@@ -37,6 +37,8 @@
 [ext_resource path="res://images/pipes/pipe_bg.png" type="Texture" id=35]
 [ext_resource path="res://images/watersource_double.png" type="Texture" id=36]
 [ext_resource path="res://images/pipes/red_pipe_bg1.png" type="Texture" id=37]
+[ext_resource path="res://images/minus.png" type="Texture" id=38]
+[ext_resource path="res://images/plus.png" type="Texture" id=39]
 
 [sub_resource type="TileSet" id=2]
 0/name = "cap_2.tres 0"
@@ -975,23 +977,25 @@ align = 1
 [node name="1_plus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 184.0
-margin_top = 365.0
-margin_right = 203.32
-margin_bottom = 393.12
+margin_left = 172.0
+margin_top = 238.0
+margin_right = 239.32
+margin_bottom = 299.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="1_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 184.0
-margin_top = 230.0
-margin_right = 200.32
-margin_bottom = 258.12
+margin_left = 83.0
+margin_top = 406.0
+margin_right = 150.32
+margin_bottom = 467.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="7_cost" type="Label" parent="Cost"]
 margin_left = 925.0
@@ -1008,19 +1012,21 @@ margin_left = 1030.0
 margin_top = 630.0
 margin_right = 1049.32
 margin_bottom = 658.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="7_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 1030.0
-margin_top = 750.0
-margin_right = 1046.32
-margin_bottom = 778.12
+margin_left = 943.0
+margin_top = 779.0
+margin_right = 1010.32
+margin_bottom = 840.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="6_cost" type="Label" parent="Cost"]
 margin_left = 960.0
@@ -1034,23 +1040,25 @@ align = 1
 [node name="6_plus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 1060.0
-margin_top = 380.0
-margin_right = 1079.32
-margin_bottom = 408.12
+margin_left = 1046.0
+margin_top = 250.0
+margin_right = 1113.32
+margin_bottom = 311.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="6_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 1060.0
-margin_top = 245.0
-margin_right = 1076.32
-margin_bottom = 273.12
+margin_left = 956.0
+margin_top = 401.0
+margin_right = 1023.32
+margin_bottom = 462.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="2_cost" type="Label" parent="Cost"]
 margin_left = 85.0
@@ -1064,23 +1072,25 @@ align = 1
 [node name="2_plus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 184.0
-margin_top = 765.0
-margin_right = 203.32
-margin_bottom = 793.12
+margin_left = 178.0
+margin_top = 627.0
+margin_right = 245.32
+margin_bottom = 688.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="2_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 184.0
-margin_top = 630.0
-margin_right = 200.32
-margin_bottom = 658.12
+margin_left = 88.0
+margin_top = 791.0
+margin_right = 155.32
+margin_bottom = 852.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="3_cost" type="Label" parent="Cost"]
 margin_left = 400.0
@@ -1094,23 +1104,25 @@ align = 1
 [node name="3_plus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 600.0
-margin_top = 240.0
-margin_right = 619.32
-margin_bottom = 268.12
+margin_left = 571.0
+margin_top = 230.0
+margin_right = 638.32
+margin_bottom = 291.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="3_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 400.0
-margin_top = 240.0
-margin_right = 416.32
-margin_bottom = 268.12
+margin_left = 324.0
+margin_top = 284.0
+margin_right = 391.32
+margin_bottom = 345.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="4_cost" type="Label" parent="Cost"]
 margin_left = 400.0
@@ -1124,23 +1136,25 @@ align = 1
 [node name="4_plus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 600.0
-margin_top = 582.0
-margin_right = 619.32
-margin_bottom = 610.12
+margin_left = 579.0
+margin_top = 577.0
+margin_right = 646.32
+margin_bottom = 638.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="4_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 400.0
-margin_top = 582.0
-margin_right = 416.32
-margin_bottom = 610.12
+margin_left = 312.0
+margin_top = 630.0
+margin_right = 379.32
+margin_bottom = 691.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="5_cost" type="Label" parent="Cost"]
 margin_left = 400.0
@@ -1154,23 +1168,25 @@ align = 1
 [node name="5_plus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 600.0
-margin_top = 940.0
-margin_right = 619.32
-margin_bottom = 968.12
+margin_left = 577.0
+margin_top = 936.0
+margin_right = 644.32
+margin_bottom = 997.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="5_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 400.0
-margin_top = 940.0
-margin_right = 416.32
-margin_bottom = 968.12
+margin_left = 315.0
+margin_top = 991.0
+margin_right = 382.32
+margin_bottom = 1052.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="9_cost" type="Label" parent="Cost"]
 margin_left = 1250.0
@@ -1184,29 +1200,31 @@ align = 1
 [node name="9_plus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 1450.0
-margin_top = 940.0
-margin_right = 1469.32
-margin_bottom = 968.12
+margin_left = 1429.0
+margin_top = 934.0
+margin_right = 1496.32
+margin_bottom = 995.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="9_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 1250.0
-margin_top = 940.0
-margin_right = 1266.32
-margin_bottom = 968.12
+margin_left = 1157.0
+margin_top = 989.0
+margin_right = 1224.32
+margin_bottom = 1050.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="8_cost" type="Label" parent="Cost"]
-margin_left = 1200.0
-margin_top = 250.0
-margin_right = 1432.0
-margin_bottom = 306.0
+margin_left = 1204.0
+margin_top = 249.0
+margin_right = 1436.0
+margin_bottom = 305.0
 custom_fonts/font = SubResource( 11 )
 text = "Cost: 4"
 align = 1
@@ -1215,22 +1233,24 @@ align = 1
 anchor_right = 0.017
 anchor_bottom = 0.022
 margin_left = 1400.0
-margin_top = 250.0
-margin_right = 1419.32
-margin_bottom = 278.12
+margin_top = 242.0
+margin_right = 1467.32
+margin_bottom = 303.12
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 12 )
-text = "+"
+icon = ExtResource( 39 )
 
 [node name="8_minus" type="Button" parent="Cost"]
 anchor_right = 0.017
 anchor_bottom = 0.022
-margin_left = 1200.0
-margin_top = 250.0
-margin_right = 1216.32
-margin_bottom = 278.12
+margin_left = 1112.0
+margin_top = 295.0
+margin_right = 1179.32
+margin_bottom = 356.12
+rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 440, -256 )
 custom_fonts/font = SubResource( 13 )
-text = "-"
+icon = ExtResource( 38 )
 
 [node name="Tooltips_2" type="Node" parent="."]
 

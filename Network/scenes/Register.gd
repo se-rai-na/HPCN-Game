@@ -13,7 +13,8 @@ signal log_in
 
 # Called when the node enters the scene tree for the first time.
 
-
+onready var http = $HTTPRequest
+onready var dhttp = $DatabaseHTTPRequest
 #checks if the two password entries match
 func check_password():
 	print("check password")
@@ -44,16 +45,21 @@ func _on_Button_pressed():
 	usernameInput = $userNameInput.get_text()
 	passwordInput = $passwordInput.get_text()
 	pwdInput = $passwordAgainInput.get_text()
+	if not passwordInput or not usernameInput or passwordInput != pwdInput:
+		$message.text = "Invalid password/username"
+		return
+	Firebase.register(usernameInput, passwordInput, http)
 	#check password
-	check_password()
-	print("Username/password checked")
+	#check_password()
+	#print("Username/password checked")
 	#if both username and password are valid creates a new file for the suer data
-	newUserFile()
+	#newUserFile()
 	print("new File generated")
 	#add user with username and password to the user database file
-	addUserDatabase()
+	#addUserDatabase()
 	print("added to user base")
 	#when everything is done, user is asked to log into account
+	yield(get_tree().create_timer(2.0), "timeout")
 	SignalBus._load_log_in()
 	hide()
 	clearUserInput()
@@ -125,3 +131,23 @@ func _on_Login_register():
 	$passwordAgain.show()
 	$passwordAgainInput.show()
 	$send.show()
+
+
+func _on_HTTPRequest_request_completed(result, response_code, headers, body: PoolByteArray):
+	print("on http singal func")
+	var resp_body = JSON.parse(body.get_string_from_ascii())
+	if response_code != 200:
+		$message.text = resp_body.result.error.message.capitalize()
+	else:
+		$message.text = "Account Created Successfully!"
+		Firebase.new_user(usernameInput, dhttp)
+	
+
+	
+
+
+func _on_DatabaseHTTPRequest_request_completed(result, response_code, headers, body):
+	print("On database")
+	print(response_code)# Replace with function bod
+	var resp_body = JSON.parse(body.get_string_from_ascii())
+	print(resp_body.result)

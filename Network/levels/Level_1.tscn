@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://resources/Type Machine.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://images/sad_icon.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://images/showerhead.png" type="Texture" id=13]
 [ext_resource path="res://images/pipes/red_pipe_bg1.png" type="Texture" id=14]
 [ext_resource path="res://images/pipes/pipe_bg.png" type="Texture" id=15]
+[ext_resource path="res://images/plus.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=4]
 size = 40
@@ -299,10 +300,11 @@ anchor_right = 0.017
 anchor_bottom = 0.022
 margin_left = 1043.0
 margin_top = 692.0
-margin_right = 1042.36
-margin_bottom = 700.24
+margin_right = 1078.36
+margin_bottom = 738.24
+grow_horizontal = 0
 custom_fonts/font = SubResource( 7 )
-text = "+"
+icon = ExtResource( 16 )
 
 [node name="minus" type="Button" parent="Cost"]
 anchor_right = 0.017

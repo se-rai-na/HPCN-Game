@@ -152,4 +152,10 @@ margin_bottom = -105.0
 custom_fonts/font = SubResource( 6 )
 text = "Send"
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="DatabaseHTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="send" to="." method="_on_Button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="request_completed" from="DatabaseHTTPRequest" to="." method="_on_DatabaseHTTPRequest_request_completed"]
